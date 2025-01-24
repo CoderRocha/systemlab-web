@@ -1,53 +1,60 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import styles from './Home.css';
+import styles from './Home.module.css';
 import Logo from '../../assets/Systemlab-logo.png'
 
-
 const Home = () => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/home');
+      };
+
     return (
-        <div className="systemlab-menu">
-            <img src={Logo} alt='SystemLab Web Logo' />
+
+        <div className={styles['systemlab-menu']}>
+            <img
+            src={Logo}
+            alt='SystemLab Web Logo'
+            onClick={handleClick}
+            />
             <header>
                 <a href="/home">
                 </a>
                 <nav>
                     <ul>
                         <li>
-                            <a href="/cadpac">Cadastrar Pacientes</a>
+                            <a href="/cadpac">Atendimentos</a>
                         </li>
                         <li>
-                            <a href="/cadexam">Cadastrar Exames</a>
+                            <a href="/cadexam">Exames</a>
                         </li>
                         <li>
-                            <a href="/reports">Gerar Relatório</a>
+                            <a href="/reports">Geral</a>
                         </li>
                     </ul>
                 </nav>
             </header>
             <br />
             <br />
-            <section id="cadastrar-pacientes">
+            <section>
                 <a href="/cadpac">
-                    <h2>Cadastrar Pacientes</h2>
+                    <h2>Atendimentos</h2>
                 </a>
             </section>
 
             <section id="cadastrar-exames">
                 <a href="/cadexam">
-                    <h2>Cadastrar Exames</h2>
+                    <h2>Exames</h2>
                 </a>
             </section>
 
             <section id="gerar-relatorio">
                 <a href="/reports">
-                    <h2>Gerar Relatório</h2>
+                    <h2>Relatório</h2>
                 </a>
             </section>
-
-            <footer>
-                <p>©2025 SystemLab Web</p>
-            </footer>
         </div>
     );
 };

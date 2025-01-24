@@ -1,0 +1,22 @@
+.systemlab-menu {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+    justify-content: center;  /* Center horizontally */
+    align-items: center; 
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+img {
+    cursor: pointer;
+}
