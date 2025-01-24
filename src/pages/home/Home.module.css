@@ -1,22 +1,51 @@
-.systemlab-menu {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 20px;
-    justify-content: center;
-    align-items: center; 
-    display: flex;
-    text-decoration: none;
-    list-style: none;
+/* Container para the whole page */
+.home-container {
+  margin: 40px auto;
+  width:600px;
+  height:400px;
+  display:grid;
+  grid-template-columns: 300px 300px;
+  grid-row: auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 }
-a {
-    text-decoration: none;
-    color: black;
+
+/* Styling cada section */
+.home-section {
+    width: 300px;
+    height: 200px;
+    background-image: url('../../assets/bgatendimentos.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect sections apenas por estética */
+.home-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Texto das sections */
+.home-section h2 {
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    font-size: 1.5rem;
     text-align: center;
 }
-img {
-    cursor: pointer;
+
+/* Anchor tag estética */
+.home-section a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -31,7 +31,10 @@ const Navbar = () => {
                         <a href="/cadexam">Exames</a>
                     </li>
                     <li className={styles['navbar-item']}>
-                        <a href="/reports">Geral</a>
+                        <a href="/reports">Relatório</a>
+                    </li>
+                    <li className={styles['navbar-item']}>
+                        <a href="/">Sair</a>
                     </li>
                 </ul>
             </nav>
