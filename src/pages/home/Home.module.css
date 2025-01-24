@@ -38,6 +38,9 @@
     font-size: 1.5rem;
     text-align: center;
 }
+.home-section h2:hover {
+    color: #0097B2;
+}
 
 /* Anchor tag estética */
 .home-section a {
