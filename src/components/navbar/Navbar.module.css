@@ -1,0 +1,48 @@
+/* Container for the Navbar */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Logo Section */
+.navbar-logo {
+    height: 100px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+/* Navigation Section */
+.navbar-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Navigation List */
+.navbar-list {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navigation Items */
+.navbar-item a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+/* Hover Effect for Links apenas por estética */
+.navbar-item a:hover {
+    color: #007BFF;
+}

@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Home.module.css';
-import Logo from '../../assets/Systemlab-logo.png'
 
 import Navbar from '../../components/navbar/Navbar';
 
@@ -18,28 +17,7 @@ const Home = () => {
         <Navbar />
 
         <div className={styles['systemlab-menu']}>
-            <img
-            src={Logo}
-            alt='SystemLab Web Logo'
-            onClick={handleClick}
-            />
-            <header>
-                <a href="/home">
-                </a>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="/cadpac">Atendimentos</a>
-                        </li>
-                        <li>
-                            <a href="/cadexam">Exames</a>
-                        </li>
-                        <li>
-                            <a href="/reports">Geral</a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+           
             <br />
             <br />
             <section>
