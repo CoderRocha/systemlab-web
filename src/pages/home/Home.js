@@ -11,7 +11,7 @@ const Home = () => {
             <Navbar />
             <div className={styles['home-container']}>
                 <section className={styles['home-section']}>
-                    <a href="/cadpac">
+                    <a href="/atendimentos">
                         <h2>Atendimentos</h2>
                     </a>
                 </section>

@@ -25,7 +25,7 @@ const Navbar = () => {
             <nav className={styles['navbar-nav']}>
                 <ul className={styles['navbar-list']}>
                     <li className={styles['navbar-item']}>
-                        <a href="/cadpac">Atendimentos</a>
+                        <a href="/atendimentos">Atendimentos</a>
                     </li>
                     <li className={styles['navbar-item']}>
                         <a href="/cadexam">Exames</a>
