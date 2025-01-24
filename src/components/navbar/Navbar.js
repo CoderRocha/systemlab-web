@@ -31,7 +31,7 @@ const Navbar = () => {
                         <a href="/exames">Exames</a>
                     </li>
                     <li className={styles['navbar-item']}>
-                        <a href="/reports">Relatório</a>
+                        <a href="/relatorios">Relatório</a>
                     </li>
                     <li className={styles['navbar-item']}>
                         <a href="/">Sair</a>

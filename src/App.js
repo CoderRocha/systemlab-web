@@ -4,6 +4,7 @@ import Login from './pages/login/Login.js'
 import Home from './pages/home/Home.js'
 import Atendimentos from './components/atendimentos/Atendimentos.js';
 import Exames from './components/exames/Exames.js';
+import Relatorios from './pages/relatorios/Relatorios.js';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/atendimentos" element={<Atendimentos />} />
           <Route path="/exames" element={<Exames />} />
+          <Route path="/relatorios" element={<Relatorios />} />
         </Routes>
       </Router>
       <footer>

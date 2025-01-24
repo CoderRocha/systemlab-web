@@ -23,7 +23,7 @@ const Home = () => {
                 </section>
 
                 <section className={styles['home-section']}>
-                    <a href="/reports">
+                    <a href="/relatorios">
                         <h2>Relatório</h2>
                     </a>
                 </section>
