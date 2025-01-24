@@ -16,27 +16,29 @@ function Login() {
     }
 
     return (
+        <div className={styles['login-container']}>
         <form onSubmit={handleSubmit} className={styles['login-form']}>
             <img src={Logo} alt='SystemLab Web Logo' />
             <h2>Bem vindo!</h2>
             <label>
-                <span>Usuário</span>
                 <input
                     type="text"
                     onChange={(e) => setUser(e.target.value)}
                     value={user}
+                    placeholder="Usuário"
                 />
             </label>
             <label>
-                <span>Senha</span>
                 <input
                     type="password"
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
+                    placeholder="Senha"
                 />
             </label>
-            <button className="btn">Entrar</button>
+            <button className={styles['btn']}>Entrar</button>
         </form>
+        </div>
     )
 }
 
