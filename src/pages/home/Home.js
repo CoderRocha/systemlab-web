@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 import Logo from '../../assets/Systemlab-logo.png'
 
+import Navbar from '../../components/navbar/Navbar';
+
 const Home = () => {
     const navigate = useNavigate();
 
@@ -12,6 +14,8 @@ const Home = () => {
       };
 
     return (
+        <>
+        <Navbar />
 
         <div className={styles['systemlab-menu']}>
             <img
@@ -56,6 +60,7 @@ const Home = () => {
                 </a>
             </section>
         </div>
+        </>
     );
 };
 
