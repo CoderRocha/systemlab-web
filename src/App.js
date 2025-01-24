@@ -12,7 +12,11 @@ function App() {
           <Route path="/home" element={<Home />} />
         </Routes>
       </Router>
+      <footer>
+        <p>©2025 SystemLab Web</p>
+      </footer>
     </div>
+
   );
 }
 
