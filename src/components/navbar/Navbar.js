@@ -28,7 +28,7 @@ const Navbar = () => {
                         <a href="/atendimentos">Atendimentos</a>
                     </li>
                     <li className={styles['navbar-item']}>
-                        <a href="/cadexam">Exames</a>
+                        <a href="/exames">Exames</a>
                     </li>
                     <li className={styles['navbar-item']}>
                         <a href="/reports">Relatório</a>

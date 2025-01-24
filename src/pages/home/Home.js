@@ -17,7 +17,7 @@ const Home = () => {
                 </section>
 
                 <section className={styles['home-section']}>
-                    <a href="/cadexam">
+                    <a href="/exames">
                         <h2>Exames</h2>
                     </a>
                 </section>
