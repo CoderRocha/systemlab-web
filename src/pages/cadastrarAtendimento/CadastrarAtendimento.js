@@ -17,7 +17,7 @@ export default function CadastrarAtendimento() {
 
   const [novoExame, setNovoExame] = useState('');
 
-  const numeroAtendimento = Math.floor(1000 + Math.random() * 9000); // Número do atendimento gerado automaticamente
+  const numeroAtendimento = Math.floor(1000 + Math.random() * 9000); // número de atendimento gerado automaticamente
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,7 +33,7 @@ export default function CadastrarAtendimento() {
 
       if (!exameJaExiste) {
         setFormData({ ...formData, exames: [...formData.exames, novoExame] });
-        setNovoExame(''); // Limpa o campo de entrada do exame
+        setNovoExame(''); // limpar o campo de inserção do exame
       } else {
         alert('Este exame já foi adicionado à lista.');
       }
@@ -43,7 +43,7 @@ export default function CadastrarAtendimento() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Dados do Atendimento:', { numeroAtendimento, ...formData });
-    // Aqui você pode implementar a lógica para enviar os dados ao backend
+    // implementar a lógica para enviar os dados ao backend
   };
 
   return (
