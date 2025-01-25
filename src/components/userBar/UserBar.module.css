@@ -17,10 +17,15 @@
     align-items: center;
 }
 
+/* Add spacing specifically for the user name */
+.user-name {
+    margin-left: 5px; /* Espaço entre 'Usuário:' e o nome */
+}
+
 /* Select dropdown for the unit */
 .user-select {
     margin-left: 5px;
-    padding: 4px 8px;
+    padding: 6px 8px;
     font-size: 0.9rem;
     border: 1px solid #ccc;
     border-radius: 4px;

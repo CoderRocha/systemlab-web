@@ -7,7 +7,7 @@ const UserBar = () => {
     return (
         <div className={styles['userbar-container']}>
             <span className={styles['user-info']}>
-                <strong>Usuário:</strong> <p> Rocha</p>
+                <strong>Usuário:</strong> <span className={styles['user-name']}>Rocha</span>
             </span>
             <span className={styles['user-unit']}>
                 <strong>Unidade:</strong>
