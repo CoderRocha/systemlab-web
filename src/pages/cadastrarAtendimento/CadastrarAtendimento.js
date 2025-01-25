@@ -82,7 +82,6 @@ export default function CadastrarAtendimento() {
               <option value="">Selecione</option>
               <option value="Masculino">Masculino</option>
               <option value="Feminino">Feminino</option>
-              <option value="Outro">Outro</option>
             </select>
           </div>
           <div className={styles.formGroup}>
@@ -106,7 +105,7 @@ export default function CadastrarAtendimento() {
             />
           </div>
           <div className={styles.formGroup}>
-            <label>Adicionar Exames</label>
+            <label>Cadastrar Exames</label>
             <div className={styles.exameInputGroup}>
               <input
                 type="text"
