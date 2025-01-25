@@ -6,6 +6,7 @@ import Atendimentos from './components/atendimentos/Atendimentos.js';
 import Exames from './components/exames/Exames.js';
 import Relatorios from './pages/relatorios/Relatorios.js';
 import CadastrarAtendimento from './pages/cadastrarAtendimento/CadastrarAtendimento.js'
+import CadastrarExame from './pages/cadastrarExame/CadastrarExame.js';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/exames" element={<Exames />} />
           <Route path="/relatorios" element={<Relatorios />} />
           <Route path="/cadastraratendimento" element={<CadastrarAtendimento />} />
+          <Route path="/cadastrarexame" element={<CadastrarExame />} />
         </Routes>
       </Router>
       <footer>
