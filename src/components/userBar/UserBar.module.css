@@ -12,7 +12,7 @@
 /* User info and unit section styles */
 .user-info,
 .user-unit {
-    margin: 0 250px;
+    margin: 0 130px;
     display: flex;
     align-items: center;
 }
