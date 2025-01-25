@@ -3,12 +3,14 @@ import React from 'react';
 //styles
 import styles from './Home.module.css';
 import Navbar from '../../components/navbar/Navbar';
+import UserBar from '../../components/userBar/UserBar'
 
 const Home = () => {
 
     return (
         <>
             <Navbar />
+            <UserBar />
             <div className={styles['home-container']}>
                 <section className={styles['home-section']}>
                     <a href="/atendimentos">

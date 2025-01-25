@@ -1,0 +1,40 @@
+/* Container for the UserBar */
+.userbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* User info and unit section styles */
+.user-info,
+.user-unit {
+    margin: 0 250px;
+    display: flex;
+    align-items: center;
+}
+
+/* Select dropdown for the unit */
+.user-select {
+    margin-left: 5px;
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Add focus and hover effects */
+.user-select:focus {
+    outline: none;
+    border-color: #0097b2;
+}
+
+.user-select:hover {
+    border-color: #666;
+}
