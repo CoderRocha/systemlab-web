@@ -3,51 +3,49 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #f8faff; /* uma cor meio "glacial white" para não ficar 100% branco */
+    padding: 10px 40px; /* Ajuste nos paddings para aproximar */
+    background-color: #f8faff; /* Cor "glacial white" */
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    max-width: absolute;
-    margin: 0 auto;
+    max-width: absolute; /* Limite para centralizar com o restante da página */
+    margin: 0 auto; /* Centraliza horizontalmente */
 }
 
 /* Logo Section */
 .navbar-logo {
-    height: 100px;
+    height: 80px; /* Reduzido para alinhar melhor */
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 20px; /* Mais espaço entre logo e itens */
+    margin-left: 262px;
 }
 
 /* Navigation Section */
 .navbar-nav {
     flex-grow: 1;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center; /* Alinha os itens no centro */
 }
 
 /* Navigation List */
 .navbar-list {
     display: flex;
-    gap: 15px;
+    gap: 30px; /* Aumenta espaço entre itens */
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
 /* Navigation Items */
-.navbar-item a {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    transition: color 0.2s ease;
+.navbar-item {
+    display: flex;
+    align-items: center;
 }
 
-/* Hover Effect for Links apenas por estética */
-.navbar-item a:hover {
-    color: #0097B2;
-}
+/* Links */
 .navbar-link {
-    color: inherit;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease;

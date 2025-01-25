@@ -1,6 +1,6 @@
 /* Container para the whole page */
 .home-container {
-    margin: 40px auto;
+    margin: 10px auto;
     width: 600px;
     height: 400px;
     display: grid;
