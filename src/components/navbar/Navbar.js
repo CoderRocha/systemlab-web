@@ -8,33 +8,54 @@ import Logo from '../../assets/Systemlab-logo.png';
 const Navbar = () => {
     const navigate = useNavigate();
 
-    const handleClick = () => {
-        navigate('/home');
+    const handleNavigate = (path) => {
+        navigate(path);
     };
 
     return (
         <div className={styles['navbar-container']}>
+            {/* Logo with navigation to home */}
             <img
                 src={Logo}
                 alt="SystemLab Web Logo"
                 className={styles['navbar-logo']}
-                onClick={handleClick}
+                onClick={() => handleNavigate('/home')}
             />
             
             {/* Navigation Section */}
             <nav className={styles['navbar-nav']}>
                 <ul className={styles['navbar-list']}>
                     <li className={styles['navbar-item']}>
-                        <a href="/atendimentos">Atendimentos</a>
+                        <span
+                            className={styles['navbar-link']}
+                            onClick={() => handleNavigate('/atendimentos')}
+                        >
+                            Atendimentos
+                        </span>
                     </li>
                     <li className={styles['navbar-item']}>
-                        <a href="/exames">Exames</a>
+                        <span
+                            className={styles['navbar-link']}
+                            onClick={() => handleNavigate('/exames')}
+                        >
+                            Exames
+                        </span>
                     </li>
                     <li className={styles['navbar-item']}>
-                        <a href="/relatorios">Relatório</a>
+                        <span
+                            className={styles['navbar-link']}
+                            onClick={() => handleNavigate('/relatorios')}
+                        >
+                            Relatórios
+                        </span>
                     </li>
                     <li className={styles['navbar-item']}>
-                        <a href="/">Sair</a>
+                        <span
+                            className={styles['navbar-link']}
+                            onClick={() => handleNavigate('/')}
+                        >
+                            Sair
+                        </span>
                     </li>
                 </ul>
             </nav>
