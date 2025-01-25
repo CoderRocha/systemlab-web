@@ -15,9 +15,10 @@
 
 .container {
     display: flex;
+    flex-direction: column; /* Permite alinhar o botão e a tabela verticalmente */
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    padding: 20px;
 }
 
 .btn:hover {
