@@ -111,7 +111,7 @@ export default function CadastrarAtendimento() {
                 type="text"
                 value={novoExame}
                 onChange={(e) => setNovoExame(e.target.value)}
-                placeholder="Nome do exame"
+                placeholder="Sigla do exame"
               />
               <button
                 type="button"
