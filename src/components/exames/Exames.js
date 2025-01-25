@@ -33,19 +33,16 @@ export default function Exames() {
                 <td>HEMO</td>
                 <td>Hemograma</td>
                 <td>R$ 120,00</td>
-                <td>Acessar</td>
               </tr>
               <tr>
                 <td>URE</td>
                 <td>Ureia</td>
                 <td>R$ 250,00</td>
-                <td>Acessar</td>
               </tr>
               <tr>
                 <td>GLID</td>
                 <td>Glicose</td>
                 <td>R$ 180,00</td>
-                <td>Acessar</td>
               </tr>
             </tbody>
           </table>
