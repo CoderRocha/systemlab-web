@@ -17,7 +17,7 @@ export default function CadastrarAtendimento() {
 
   const [novoExame, setNovoExame] = useState('');
 
-  const numeroAtendimento = Math.floor(1000 + Math.random() * 9000); // gerar número de atendimento aleatório
+  const numeroAtendimento = Math.floor(1000 + Math.random() * 9000); // Número do atendimento gerado automaticamente
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,15 +26,24 @@ export default function CadastrarAtendimento() {
 
   const handleAddExame = () => {
     if (novoExame.trim()) {
-      setFormData({ ...formData, exames: [...formData.exames, novoExame] });
-      setNovoExame(''); // aqui limpa o campo de inserção do exame
+      // Verifica se o exame já está na lista (case-insensitive)
+      const exameJaExiste = formData.exames.some(
+        (exame) => exame.toLowerCase() === novoExame.toLowerCase()
+      );
+
+      if (!exameJaExiste) {
+        setFormData({ ...formData, exames: [...formData.exames, novoExame] });
+        setNovoExame(''); // Limpa o campo de entrada do exame
+      } else {
+        alert('Este exame já foi adicionado à lista.');
+      }
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Dados do Atendimento:', { numeroAtendimento, ...formData });
-    // implementar a lógica backend
+    // Aqui você pode implementar a lógica para enviar os dados ao backend
   };
 
   return (
