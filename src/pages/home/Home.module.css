@@ -2,7 +2,7 @@
 .home-container {
     margin: 10px auto;
     width: 600px;
-    height: 404px;
+    height: 400px;
     display: grid;
     grid-template-columns: 300px 300px;
     grid-row: auto auto;
