@@ -7,6 +7,7 @@ import styles from './Home.module.css';
 //pages & components
 import Navbar from '../../components/navbar/Navbar';
 import UserBar from '../../components/userBar/UserBar';
+import Footer from '../../components/footer/Footer';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -48,6 +49,11 @@ const Home = () => {
                     <h2>Sair</h2>
                 </section>
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <Footer />
         </>
     );
 };

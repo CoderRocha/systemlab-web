@@ -5,7 +5,7 @@
 
 footer {
   font-weight: bold;
-  padding: 2px;
+  padding: 0px;
   margin: 0px; /* Avoid negative margins for better layout consistency */
 }
 

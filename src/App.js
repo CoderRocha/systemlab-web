@@ -7,7 +7,6 @@ import Exames from './components/exames/Exames.js';
 import Relatorios from './pages/relatorios/Relatorios.js';
 import CadastrarAtendimento from './pages/cadastrarAtendimento/CadastrarAtendimento.js'
 import CadastrarExame from './pages/cadastrarExame/CadastrarExame.js';
-import Footer from './components/footer/Footer.js';
 
 function App() {
   return (
@@ -25,7 +24,6 @@ function App() {
           </Routes>
         </Router>
       </div>
-      <Footer />
     </>
   );
 }
