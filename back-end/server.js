@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 // Endpoints bem básicos
 app.get('/', (req, res) => {
-    res.send('API do Sistema de Pacientes está funcionando!');
+    res.send('API do Sistema está funcionando!');
 });
 
 // outros endpoints estarão aqui
