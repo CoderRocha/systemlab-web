@@ -31,17 +31,17 @@ export default function Relatorios() {
             </thead>
             <tbody>
               <tr>
-                <td>01/01/2023</td>
-                <td>12345</td>
+                <td>18/01/2025</td>
+                <td>27890</td>
                 <td>João Silva</td>
                 <td>Masculino</td>
                 <td>joao.silva@email.com</td>
                 <td>(11) 99999-9999</td>
-                <td>HEMOD, URI</td>
+                <td>HEMO, URE</td>
               </tr>
               <tr>
-                <td>15/02/2023</td>
-                <td>67890</td>
+                <td>15/01/2025</td>
+                <td>12345</td>
                 <td>Maria Oliveira</td>
                 <td>Feminino</td>
                 <td>maria.oliveira@email.com</td>
@@ -49,7 +49,7 @@ export default function Relatorios() {
                 <td>GLI</td>
               </tr>
               <tr>
-                <td>10/03/2023</td>
+                <td>01/01/2025</td>
                 <td>11223</td>
                 <td>Carlos Souza</td>
                 <td>Masculino</td>

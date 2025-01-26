@@ -40,7 +40,7 @@ export default function Exames() {
                 <td>R$ 250,00</td>
               </tr>
               <tr>
-                <td>GLID</td>
+                <td>GLI</td>
                 <td>Glicose</td>
                 <td>R$ 180,00</td>
               </tr>

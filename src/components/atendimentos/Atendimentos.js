@@ -26,23 +26,24 @@ export default function Atendimentos() {
                 <th>Data de Cadastro</th>
                 <th>Código do Paciente</th>
                 <th>Nome Completo</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>01/01/2023</td>
-                <td>12345</td>
+                <td>18/01/2025</td>
+                <td>27890</td>
                 <td>João Silva</td>
                 <td>Acessar</td>
               </tr>
               <tr>
-                <td>15/02/2023</td>
-                <td>67890</td>
+                <td>15/01/2025</td>
+                <td>12345</td>
                 <td>Maria Oliveira</td>
                 <td>Acessar</td>
               </tr>
               <tr>
-                <td>10/03/2023</td>
+                <td>01/01/2025</td>
                 <td>11223</td>
                 <td>Carlos Souza</td>
                 <td>Acessar</td>
