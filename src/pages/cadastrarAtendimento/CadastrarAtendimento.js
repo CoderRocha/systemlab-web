@@ -69,6 +69,7 @@ export default function CadastrarAtendimento() {
               value={formData.nomePaciente}
               onChange={handleInputChange}
               required
+              placeholder="Digite o nome do paciente"
             />
           </div>
           <div className={styles.formGroup}>
@@ -79,7 +80,7 @@ export default function CadastrarAtendimento() {
               onChange={handleInputChange}
               required
             >
-              <option value="">Selecione</option>
+              <option value="">Selecione o Sexo</option>
               <option value="Masculino">Masculino</option>
               <option value="Feminino">Feminino</option>
             </select>
@@ -92,6 +93,7 @@ export default function CadastrarAtendimento() {
               value={formData.email}
               onChange={handleInputChange}
               required
+              placeholder="Digite o email do paciente"
             />
           </div>
           <div className={styles.formGroup}>
@@ -102,6 +104,7 @@ export default function CadastrarAtendimento() {
               value={formData.celular}
               onChange={handleInputChange}
               required
+              placeholder="Digite o número de celular do paciente"
             />
           </div>
           <div className={styles.formGroup}>
