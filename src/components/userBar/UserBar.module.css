@@ -12,7 +12,9 @@
 /* User info and unit section styles */
 .user-info,
 .user-unit {
-    margin: 0 130px;
+    margin: 0 140px;
+    margin-left: 160px;
+    margin-right: 140px;
     display: flex;
     align-items: center;
 }
@@ -26,7 +28,7 @@
 .user-select {
     margin-left: 5px;
     padding: 4px 8px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;

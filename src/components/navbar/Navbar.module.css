@@ -15,14 +15,14 @@
 .navbar-logo {
     height: 80px; /* Reduzido para alinhar melhor */
     cursor: pointer;
-    margin-right: 20px; /* Mais espaço entre logo e itens */
-    margin-left: 262px;
+    margin-right: 90px; /* Mais espaço entre logo e itens */
+    margin-left: 410px;
 }
 
 /* Navigation Section */
 .navbar-nav {
     flex-grow: 1;
-    display: flex;
+    display: center;
     justify-content: center; /* Alinha os itens no centro */
 }
 
@@ -45,7 +45,7 @@
 .navbar-link {
     color: black;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease;
