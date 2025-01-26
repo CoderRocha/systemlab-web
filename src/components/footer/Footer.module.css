@@ -3,7 +3,7 @@
   margin-top: 40px; /* Space between the main content and footer */
 }
 
-footer {
+footer p{
   font-weight: bold;
   padding: 0px;
   margin: 0px; /* Avoid negative margins for better layout consistency */
