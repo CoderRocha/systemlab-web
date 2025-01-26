@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // Styles
 import styles from './Login.module.css';
 import Logo from '../../assets/Systemlab-logo.png';
-import BackgroundImage from '../../assets/login-background.jpg'; // Import the background image
+import BackgroundImage from '../../assets/login-background.jpg';
 
 function Login() {
     const [user, setUser] = useState('');
