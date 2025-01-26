@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //styles
 import styles from './CadastrarAtendimento.module.css';
@@ -16,8 +16,13 @@ export default function CadastrarAtendimento() {
   });
 
   const [novoExame, setNovoExame] = useState('');
+  const [numeroAtendimento, setNumeroAtendimento] = useState(null); // state para o número de atendimento
 
-  const numeroAtendimento = Math.floor(1000 + Math.random() * 9000); // número de atendimento gerado automaticamente
+  useEffect(() => {
+    // Gera o número de atendimento apenas uma vez quando a página é carregada
+    const numero = Math.floor(1000 + Math.random() * 9000);
+    setNumeroAtendimento(numero);
+  }, []); // Empty array faz com que o número de atendimento seja criado apenas uma vez
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +31,7 @@ export default function CadastrarAtendimento() {
 
   const handleAddExame = () => {
     if (novoExame.trim()) {
-      // Verifica se o exame já está na lista (case-insensitive)
+      // Verifica se o exame já está na lista, independente de como foi inserido (case-insensitive)
       const exameJaExiste = formData.exames.some(
         (exame) => exame.toLowerCase() === novoExame.toLowerCase()
       );
@@ -56,7 +61,7 @@ export default function CadastrarAtendimento() {
             <label>Número do Atendimento</label>
             <input
               type="text"
-              value={numeroAtendimento}
+              value={numeroAtendimento} // O número de atendimento será constante e não irá mudar agora
               readOnly
               className={styles.readOnlyInput}
             />
