@@ -59,7 +59,7 @@ select:focus {
 }
 
 .addExameBtn {
-    background: #0097B2;
+    background: #009B44;
     border: none;
     color: #fff;
     padding: 10px 15px;
@@ -70,7 +70,7 @@ select:focus {
 }
 
 .addExameBtn:hover {
-    background: #007a92;
+    background: #007B2F;
 }
 
 .exameList {
