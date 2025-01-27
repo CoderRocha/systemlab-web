@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 //styles
 import styles from './CadastrarExame.module.css';
@@ -7,6 +9,7 @@ import styles from './CadastrarExame.module.css';
 import Navbar from '../../components/navbar/Navbar';
 
 export default function CadastrarExame() {
+  const navigate = useNavigate(); // redirecionar após o cadastro
   const [formData, setFormData] = useState({
     codigo: '',
     descricao: '',
@@ -18,10 +21,20 @@ export default function CadastrarExame() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Dados do Exame:', formData);
-    // implementar a lógica para enviar os dados ao backend later
+    
+    try {
+      // envia os dados para o backend
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/exames`, formData);
+      console.log('Exame cadastrado com sucesso:', response.data);
+
+      // redireciona para a página de exames cadastrados
+      navigate('/exames');
+    } catch (error) {
+      console.error('Erro ao cadastrar exame:', error);
+      alert('Erro ao cadastrar exame. Tente novamente!');
+    }
   };
 
   return (

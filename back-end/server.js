@@ -86,6 +86,40 @@ app.get('/atendimentos', (req, res) => {
   });
 });
 
+// endpoint para cadastrar um exame
+app.post('/exames', (req, res) => {
+    const { codigo, descricao, valor } = req.body;
+
+    const sql = `
+        INSERT INTO exames (codigo, descricao, valor)
+        VALUES (?, ?, ?)
+    `;
+    const params = [codigo, descricao, valor];
+
+    db.run(sql, params, function (err) {
+        if (err) {
+            console.error('Erro ao salvar exame:', err.message);
+            return res.status(500).json({ message: 'Erro ao salvar exame.' });
+        }
+
+        res.status(201).json({ message: 'Exame cadastrado com sucesso!', exameId: this.lastID });
+    });
+});
+
+// endpoint para listar todos os exames cadastrados
+app.get('/exames', (req, res) => {
+    const sql = `SELECT codigo, descricao, valor FROM exames`;
+
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error('Erro ao buscar exames:', err.message);
+            return res.status(500).json({ message: 'Erro ao buscar exames.' });
+        }
+
+        res.status(200).json(rows);
+    });
+});
+
 // config  do servidor local
 const PORT = 5000;
 app.listen(PORT, () => {
