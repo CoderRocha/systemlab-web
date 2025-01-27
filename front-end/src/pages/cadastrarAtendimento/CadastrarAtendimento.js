@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-//styles
+// styles
 import styles from './CadastrarAtendimento.module.css';
 
-//pages & components
+// pages & components
 import Navbar from '../../components/navbar/Navbar';
 
 export default function CadastrarAtendimento() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nomePaciente: '',
     sexo: '',
@@ -17,12 +20,15 @@ export default function CadastrarAtendimento() {
 
   const [novoExame, setNovoExame] = useState('');
   const [numeroAtendimento, setNumeroAtendimento] = useState(null); // state para o número de atendimento
+  const [loading, setLoading] = useState(false); // state para exibir "Carregando..."
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL; // URL do backend do  .env
 
   useEffect(() => {
-    // Gera o número de atendimento apenas uma vez quando a página é carregada
+    // aqui gera o número de atendimento apenas uma vez quando a página é carregada
     const numero = Math.floor(1000 + Math.random() * 9000);
     setNumeroAtendimento(numero);
-  }, []); // Empty array faz com que o número de atendimento seja criado apenas uma vez
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,24 +37,40 @@ export default function CadastrarAtendimento() {
 
   const handleAddExame = () => {
     if (novoExame.trim()) {
-      // Verifica se o exame já está na lista, independente de como foi inserido (case-insensitive)
       const exameJaExiste = formData.exames.some(
         (exame) => exame.toLowerCase() === novoExame.toLowerCase()
       );
 
       if (!exameJaExiste) {
         setFormData({ ...formData, exames: [...formData.exames, novoExame] });
-        setNovoExame(''); // limpar o campo de inserção do exame
+        setNovoExame('');
       } else {
         alert('Este exame já foi adicionado à lista.');
       }
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Dados do Atendimento:', { numeroAtendimento, ...formData });
-    // implementar a lógica para enviar os dados ao backend
+    setLoading(true); // define o state como "carregando"
+
+    const atendimentoData = {
+      numeroAtendimento,
+      ...formData,
+    };
+
+    try {
+      // aqui acontece a requisição POST para o backend
+      await axios.post(`${backendUrl}/atendimentos`, atendimentoData);
+
+      // aqui redireciona para a página de atendimentos após salvar o atendimento com sucesso
+      navigate('/atendimentos');
+    } catch (error) {
+      console.error('Erro ao salvar atendimento:', error);
+      alert('Ocorreu um erro ao salvar o atendimento. Tente novamente.');
+    } finally {
+      setLoading(false); // finaliza o state de carregamento
+    }
   };
 
   return (
@@ -61,7 +83,7 @@ export default function CadastrarAtendimento() {
             <label>Número do Atendimento</label>
             <input
               type="text"
-              value={numeroAtendimento} // O número de atendimento será constante e não irá mudar agora
+              value={numeroAtendimento}
               readOnly
               className={styles.readOnlyInput}
             />
@@ -135,8 +157,12 @@ export default function CadastrarAtendimento() {
               ))}
             </ul>
           </div>
-          <button type="submit" className={styles.btn}>
-            Salvar Atendimento
+          <button
+            type="submit"
+            className={styles.btn}
+            disabled={loading} // desabilita o botão durante o carregamento
+          >
+            {loading ? 'Salvando...' : 'Salvar Atendimento'}
           </button>
         </form>
       </div>

@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-// aqui irá criar ou conectar ao banco SQLite
+// cria ou conecta ao banco SQLite
 const db = new sqlite3.Database(path.resolve(__dirname, 'database.sqlite'), (err) => {
     if (err) {
         console.error('Erro ao conectar ao banco de dados:', err.message);
@@ -10,10 +10,10 @@ const db = new sqlite3.Database(path.resolve(__dirname, 'database.sqlite'), (err
     }
 });
 
-// criação das tabelas
+// criação das tabelas (se não tiverem sido criadas anteriormente)
 db.serialize(() => {
     db.run(`
-        CREATE TABLE IF NOT EXISTS pacientes (
+        CREATE TABLE IF NOT EXISTS atendimentos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             numero_atendimento TEXT UNIQUE,
             nome_completo TEXT NOT NULL,
