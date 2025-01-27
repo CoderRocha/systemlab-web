@@ -20,6 +20,7 @@ db.serialize(() => {
             sexo TEXT NOT NULL,
             email TEXT NOT NULL,
             celular TEXT NOT NULL
+            data_cadastro TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
         )
     `);
 
@@ -33,13 +34,13 @@ db.serialize(() => {
     `);
 
     db.run(`
-        CREATE TABLE IF NOT EXISTS paciente_exames (
-            paciente_id INTEGER,
-            exame_id INTEGER,
-            FOREIGN KEY(paciente_id) REFERENCES pacientes(id),
-            FOREIGN KEY(exame_id) REFERENCES exames(id)
-        )
-    `);
+      CREATE TABLE IF NOT EXISTS paciente_exames (
+          paciente_id INTEGER,
+          exame_id INTEGER,
+          FOREIGN KEY(paciente_id) REFERENCES atendimentos(id),
+          FOREIGN KEY(exame_id) REFERENCES exames(id)
+      )
+  `);  
 });
 
 module.exports = db;

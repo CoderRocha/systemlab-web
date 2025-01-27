@@ -1,64 +1,78 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-//styles
+// styles
 import styles from './Relatorios.module.css';
 
 import Navbar from '../../components/navbar/Navbar';
 
 export default function Relatorios() {
+  const [relatorios, setRelatorios] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+  const fetchRelatorios = async () => {
+    try {
+      const response = await axios.get(`${backendUrl}/relatorios`);
+      setRelatorios(response.data);
+    } catch (error) {
+      console.error('Erro ao buscar relatórios:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchRelatorios();
+  }, []);
+
   const handleClick = (e) => {
     e.preventDefault();
+    fetchRelatorios();  // Refaz a busca de relatórios quando o botão for clicado
   };
 
   return (
     <>
       <Navbar />
       <div className={styles.container}>
-        <button className={styles['btn']} onClick={handleClick}>Gerar Relatório</button>
+        <button className={styles['btn']} onClick={handleClick}>
+          Gerar Relatório
+        </button>
         <div className={styles.listContainer}>
           <h2>Relatório de Pacientes por Data (Geral)</h2>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Data de Cadastro</th>
-                <th>Código do Paciente</th>
-                <th>Nome Completo</th>
-                <th>Sexo</th>
-                <th>Email</th>
-                <th>Celular</th>
-                <th>Exames Cadastrados</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>18/01/2025</td>
-                <td>27890</td>
-                <td>João Silva</td>
-                <td>Masculino</td>
-                <td>joao.silva@email.com</td>
-                <td>(11) 99999-9999</td>
-                <td>HEMO, URE</td>
-              </tr>
-              <tr>
-                <td>15/01/2025</td>
-                <td>12345</td>
-                <td>Maria Oliveira</td>
-                <td>Feminino</td>
-                <td>maria.oliveira@email.com</td>
-                <td>(21) 98888-8888</td>
-                <td>GLI</td>
-              </tr>
-              <tr>
-                <td>01/01/2025</td>
-                <td>11223</td>
-                <td>Carlos Souza</td>
-                <td>Masculino</td>
-                <td>carlos.souza@email.com</td>
-                <td>(31) 97777-7777</td>
-                <td>HEMO</td>
-              </tr>
-            </tbody>
-          </table>
+          {loading ? (
+            <p>Carregando relatórios...</p>
+          ) : relatorios.length === 0 ? (
+            <p>Não há relatórios disponíveis.</p>
+          ) : (
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Data de Cadastro</th>
+                  <th>Código do Paciente</th>
+                  <th>Nome Completo</th>
+                  <th>Sexo</th>
+                  <th>Email</th>
+                  <th>Celular</th>
+                  <th>Exames Cadastrados</th>
+                </tr>
+              </thead>
+              <tbody>
+                {relatorios.map((relatorio, index) => (
+                  <tr key={index}>
+                    <td>{new Date(relatorio.data_cadastro).toLocaleDateString()}</td>
+                    <td>{relatorio.codigo_paciente}</td>
+                    <td>{relatorio.nome_completo}</td>
+                    <td>{relatorio.sexo}</td>
+                    <td>{relatorio.email}</td>
+                    <td>{relatorio.celular}</td>
+                    <td>{relatorio.exames}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </>

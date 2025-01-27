@@ -120,6 +120,34 @@ app.get('/exames', (req, res) => {
     });
 });
 
+// endpoint para gerar o relatório de pacientes por data
+app.get('/relatorios', (req, res) => {
+  const sql = `
+    SELECT 
+      a.data_cadastro, 
+      a.numero_atendimento AS codigo_paciente, 
+      a.nome_completo, 
+      a.sexo, 
+      a.email, 
+      a.celular, 
+      IFNULL(GROUP_CONCAT(e.descricao), 'Nenhum') AS exames
+    FROM atendimentos a
+    LEFT JOIN paciente_exames pe ON a.id = pe.paciente_id
+    LEFT JOIN exames e ON pe.exame_id = e.id
+    GROUP BY a.id
+    ORDER BY a.data_cadastro DESC
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      console.error('Erro ao buscar relatórios:', err.message);
+      return res.status(500).json({ message: 'Erro ao buscar relatórios.' });
+    }
+
+    res.status(200).json(rows);
+  });
+});
+
 // config  do servidor local
 const PORT = 5000;
 app.listen(PORT, () => {
