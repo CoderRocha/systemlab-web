@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 // styles
@@ -8,12 +8,13 @@ import Navbar from '../../components/navbar/Navbar';
 
 export default function Relatorios() {
   const [relatorios, setRelatorios] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const fetchRelatorios = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(`${backendUrl}/relatorios`);
       setRelatorios(response.data);
     } catch (error) {
@@ -22,10 +23,6 @@ export default function Relatorios() {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchRelatorios();
-  }, []);
 
   const handleClick = (e) => {
     e.preventDefault();

@@ -124,7 +124,6 @@ app.get('/exames', (req, res) => {
 app.get('/relatorios', (req, res) => {
   const sql = `
     SELECT 
-      a.data_cadastro, 
       a.numero_atendimento AS codigo_paciente, 
       a.nome_completo, 
       a.sexo, 
@@ -135,7 +134,6 @@ app.get('/relatorios', (req, res) => {
     LEFT JOIN paciente_exames pe ON a.id = pe.paciente_id
     LEFT JOIN exames e ON pe.exame_id = e.id
     GROUP BY a.id
-    ORDER BY a.data_cadastro DESC
   `;
 
   db.all(sql, [], (err, rows) => {

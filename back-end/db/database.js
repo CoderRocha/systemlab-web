@@ -20,7 +20,6 @@ db.serialize(() => {
             sexo TEXT NOT NULL,
             email TEXT NOT NULL,
             celular TEXT NOT NULL
-            data_cadastro TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
         )
     `);
 
