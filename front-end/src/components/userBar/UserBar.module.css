@@ -1,45 +1,64 @@
-/* Container for the UserBar */
+/* Container principal da UserBar */
 .userbar-container {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centraliza a UserBar */
     align-items: center;
-    padding: 20px 0;
+    padding: 15px 20px;
     font-family: Arial, sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #333;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1200px; /* Define um limite para telas grandes */
+    margin: 20px auto; /* Mantém centralizado */
+    position: relative;
 }
 
-/* User info and unit section styles */
-.user-info,
-.user-unit {
-    margin: 0 140px;
-    margin-left: 160px;
-    margin-right: 140px;
+/* Wrapper para organizar elementos */
+.userbar-content {
+    display: flex;
+    justify-content: space-between; /* Mantém usuário e unidade afastados */
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Nome do usuário */
+.user-info {
     display: flex;
     align-items: center;
+    gap: 8px; /* Espaço entre "Usuário:" e o nome */
+    white-space: nowrap;
+    min-width: 150px;
+    flex-shrink: 0;
+    margin-right: 15%; /* AUMENTA O ESPAÇO ENTRE USUÁRIO E UNIDADE */
 }
 
-/* Add spacing specifically for the user name */
 .user-name {
-    margin-left: 5px; /* Espaço entre 'Usuário:' e o nome */
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Select dropdown for the unit */
+/* Unidade */
+.user-unit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 150px;
+    flex-shrink: 0;
+}
+
+/* Select */
 .user-select {
-    margin-left: 5px;
-    padding: 2px 8px;
-    font-size: 0.8rem;
+    padding: 4px 12px;
+    font-size: 0.9rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
-    color: #333;
     cursor: pointer;
-}
-
-/* Add focus and hover effects */
-.user-select:focus {
-    outline: none;
-    border-color: #0097b2;
+    max-width: 180px;
 }
 
 .user-select:hover {
