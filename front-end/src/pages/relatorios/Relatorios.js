@@ -26,7 +26,7 @@ export default function Relatorios() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    fetchRelatorios();  // refaz a busca de relatórios quando o botão for clicado
+    fetchRelatorios();  // Refaz a busca de relatórios quando o botão for clicado
   };
 
   return (
@@ -38,6 +38,7 @@ export default function Relatorios() {
         </button>
         <div className={styles.listContainer}>
           <h2>Relatório de Pacientes por Data (Geral)</h2>
+          <p>Gere um relatório contendo todas as informações dos atendimentos cadastrados no sistema.</p>
           {loading ? (
             <p>Carregando relatórios...</p>
           ) : relatorios.length === 0 ? (
