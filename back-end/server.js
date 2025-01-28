@@ -90,19 +90,35 @@ app.get('/atendimentos', (req, res) => {
 app.post('/exames', (req, res) => {
     const { codigo, descricao, valor } = req.body;
 
-    const sql = `
-        INSERT INTO exames (codigo, descricao, valor)
-        VALUES (?, ?, ?)
-    `;
-    const params = [codigo, descricao, valor];
-
-    db.run(sql, params, function (err) {
+    // Verificar se o código do exame já existe, ignorando a diferença de maiúsculas/minúsculas
+    const sqlCheckExame = `SELECT id FROM exames WHERE LOWER(codigo) = LOWER(?)`;
+    
+    db.get(sqlCheckExame, [codigo], (err, row) => {
         if (err) {
-            console.error('Erro ao salvar exame:', err.message);
-            return res.status(500).json({ message: 'Erro ao salvar exame.' });
+            console.error('Erro ao verificar exame existente:', err.message);
+            return res.status(500).json({ message: 'Erro ao verificar exame.' });
         }
 
-        res.status(201).json({ message: 'Exame cadastrado com sucesso!', exameId: this.lastID });
+        if (row) {
+            // Se o exame já existe, retornamos uma mensagem de erro
+            return res.status(400).json({ message: 'Exame com esse código já cadastrado.' });
+        }
+
+        // Caso não exista, insere o novo exame
+        const sql = `
+            INSERT INTO exames (codigo, descricao, valor)
+            VALUES (?, ?, ?)
+        `;
+        const params = [codigo, descricao, valor];
+
+        db.run(sql, params, function (err) {
+            if (err) {
+                console.error('Erro ao salvar exame:', err.message);
+                return res.status(500).json({ message: 'Erro ao salvar exame.' });
+            }
+
+            res.status(201).json({ message: 'Exame cadastrado com sucesso!', exameId: this.lastID });
+        });
     });
 });
 

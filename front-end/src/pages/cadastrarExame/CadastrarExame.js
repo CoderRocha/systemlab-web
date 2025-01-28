@@ -15,6 +15,7 @@ export default function CadastrarExame() {
     descricao: '',
     valor: '',
   });
+  const [errorMessage, setErrorMessage] = useState(''); // Estado para mensagem de erro
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,17 +24,21 @@ export default function CadastrarExame() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      // envia os dados para o backend
+      // Envia os dados para o backend
       const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/exames`, formData);
       console.log('Exame cadastrado com sucesso:', response.data);
 
-      // redireciona para a página de exames cadastrados
+      // Redireciona para a página de exames cadastrados
       navigate('/exames');
     } catch (error) {
       console.error('Erro ao cadastrar exame:', error);
-      alert('Erro ao cadastrar exame. Tente novamente!');
+      if (error.response && error.response.data) {
+        setErrorMessage(error.response.data.message); // Exibe a mensagem de erro do backend
+      } else {
+        setErrorMessage('Erro ao cadastrar exame. Tente novamente!');
+      }
     }
   };
 
@@ -42,6 +47,7 @@ export default function CadastrarExame() {
       <Navbar />
       <div className={styles.container}>
         <h2>Cadastrar Exame</h2>
+        {errorMessage && <p className={styles.error}>{errorMessage}</p>} {/* Exibe a mensagem de erro */}
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label>Código do Exame</label>
