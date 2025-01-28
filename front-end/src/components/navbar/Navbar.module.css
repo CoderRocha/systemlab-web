@@ -2,13 +2,12 @@
 .navbar-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* Centraliza o conteúdo */
     padding: 10px 40px; /* Ajuste nos paddings para aproximar */
     background-color: #f8faff; /* Cor "glacial white" */
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    max-width: absolute; /* Limite para centralizar com o restante da página */
-    margin: 0 auto; /* Centraliza horizontalmente */
+    width: 100%; /* Garante que a navbar ocupe toda a largura */
 }
 
 /* Logo Section */
@@ -16,14 +15,12 @@
     height: 80px; /* Reduzido para alinhar melhor */
     cursor: pointer;
     margin-right: 90px; /* Mais espaço entre logo e itens */
-    margin-left: 28%;
 }
 
 /* Navigation Section */
 .navbar-nav {
-    flex-grow: 1;
-    display: center;
-    justify-content: center; /* Alinha os itens no centro */
+    display: flex;
+    justify-content: center; /* Centraliza os itens dentro da navbar */
 }
 
 /* Navigation List */
