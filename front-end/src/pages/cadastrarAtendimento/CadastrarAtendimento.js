@@ -153,7 +153,7 @@ export default function CadastrarAtendimento() {
             </div>
             <ul className={styles.exameList}>
               {formData.exames.map((exame, index) => (
-                <li key={index}>{exame}</li>
+                <li className={styles.liexame} key={index}>{exame}</li>
               ))}
             </ul>
           </div>

@@ -69,6 +69,11 @@ select:focus {
     font-weight: bold;
 }
 
+.liexame {
+    font-size: 1em;
+    font-weight: bold;
+}
+
 .addExameBtn:hover {
     background: #007B2F;
 }
