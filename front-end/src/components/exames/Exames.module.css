@@ -15,7 +15,7 @@
 
 .container {
     display: flex;
-    flex-direction: column; /* Permite alinhar o botão e a tabela verticalmente */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
