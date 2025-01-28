@@ -42,6 +42,7 @@ export default function Exames() {
         <button className={styles['btn']} onClick={handleClick}>Criar Novo Exame</button>
         <div className={styles.listContainer}>
           <h2>Exames Cadastrados</h2>
+          <p>Listagem contendo todos os exames cadastrados no sistema.</p>
           {loading ? (
             <p>Carregando exames...</p>
           ) : exames.length === 0 ? (
