@@ -54,6 +54,7 @@ export default function Exames() {
                   <th>Código</th>
                   <th>Descrição</th>
                   <th>Valor</th>
+                  <th>Ação</th>
                 </tr>
               </thead>
               <tbody>
@@ -62,6 +63,11 @@ export default function Exames() {
                     <td>{exame.codigo}</td>
                     <td>{exame.descricao}</td>
                     <td>{`R$ ${exame.valor.toFixed(2)}`}</td>
+                    <td>
+                      <button className={styles.btndelete} onClick={''}>
+                        Deletar
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
