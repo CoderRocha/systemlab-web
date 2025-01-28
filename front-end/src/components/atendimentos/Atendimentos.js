@@ -42,6 +42,7 @@ export default function Atendimentos() {
         </button>
         <div className={styles.listContainer}>
           <h2>Listagem de Atendimentos</h2>
+          <p>Listagem contendo todos os atendimentos cadastrados no sistema.</p>
           {loading ? (
             <p>Carregando atendimentos...</p>
           ) : atendimentos.length === 0 ? (
@@ -69,7 +70,7 @@ export default function Atendimentos() {
                     <td>{atendimento.celular}</td>
                     <td>{atendimento.exames || 'Nenhum'}</td>
                     <td>
-                      <button onClick={() => navigate(`/atendimentos/${atendimento.numero_atendimento}`)}>
+                      <button className={styles.btn} onClick={() => navigate(`/atendimentos/${atendimento.numero_atendimento}`)}>
                         Acessar
                       </button>
                     </td>
