@@ -33,6 +33,19 @@ export default function Atendimentos() {
     navigate('/cadastraratendimento');
   };
 
+  const handleDelete = async (numeroAtendimento) => {
+    try {
+      const response = await axios.delete(`${backendUrl}/atendimentos/${numeroAtendimento}`);
+      alert(response.data.message);
+
+      // Atualiza a lista de atendimentos removendo o atendimento deletado
+      setAtendimentos(atendimentos.filter(atendimento => atendimento.numero_atendimento !== numeroAtendimento));
+    } catch (error) {
+      console.error('Erro ao deletar atendimento:', error);
+      alert('Erro ao deletar atendimento');
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -62,7 +75,10 @@ export default function Atendimentos() {
                     <td>{atendimento.numero_atendimento}</td>
                     <td>{atendimento.nomePaciente}</td>
                     <td>
-                      <button className={styles.btndelete} onClick={() => navigate(`/atendimentos/${atendimento.numero_atendimento}`)}>
+                      <button
+                        className={styles.btndelete}
+                        onClick={() => handleDelete(atendimento.numero_atendimento)}
+                      >
                         Deletar
                       </button>
                     </td>

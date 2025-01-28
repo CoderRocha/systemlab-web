@@ -77,14 +77,45 @@ app.get('/atendimentos', (req, res) => {
     `;
   
     db.all(sql, [], (err, rows) => {
-      if (err) {
-        console.error('Erro ao buscar atendimentos:', err.message);
-        return res.status(500).json({ message: 'Erro ao buscar atendimentos.' });
-      }
+        if (err) {
+            console.error('Erro ao buscar atendimentos:', err.message);
+            return res.status(500).json({ message: 'Erro ao buscar atendimentos.' });
+        }
   
-      res.status(200).json(rows);
+        res.status(200).json(rows);
+    });
+});
+
+// endpoint para deletar um atendimento
+app.delete('/atendimentos/:numero_atendimento', (req, res) => {
+  const numeroAtendimento = req.params.numero_atendimento;
+
+  const sqlDeleteExames = `
+    DELETE FROM paciente_exames WHERE paciente_id = (SELECT id FROM atendimentos WHERE numero_atendimento = ?)
+  `;
+  
+  const sqlDeleteAtendimento = `
+    DELETE FROM atendimentos WHERE numero_atendimento = ?
+  `;
+
+  // Deletar os exames associados
+  db.run(sqlDeleteExames, [numeroAtendimento], function (err) {
+    if (err) {
+      console.error('Erro ao deletar exames:', err.message);
+      return res.status(500).json({ message: 'Erro ao deletar exames.' });
+    }
+
+    // Deletar o atendimento
+    db.run(sqlDeleteAtendimento, [numeroAtendimento], function (err) {
+      if (err) {
+        console.error('Erro ao deletar atendimento:', err.message);
+        return res.status(500).json({ message: 'Erro ao deletar atendimento.' });
+      }
+
+      res.status(200).json({ message: 'Atendimento deletado com sucesso!' });
     });
   });
+});
 
 // endpoint para cadastrar um exame
 app.post('/exames', (req, res) => {
@@ -160,9 +191,9 @@ app.get('/relatorios', (req, res) => {
   
       res.status(200).json(rows);
     });
-  });  
+});  
 
-// config  do servidor local
+// configuração do servidor local
 const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
