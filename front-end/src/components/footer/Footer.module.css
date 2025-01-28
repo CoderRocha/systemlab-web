@@ -1,17 +1,17 @@
 .footer-container {
   text-align: center;
-  margin-top: 40px; /* Space between the main content and footer */
+  margin-top: 0px;
 }
 
 footer p{
   font-weight: bold;
   padding: 0px;
-  margin: 0px; /* Avoid negative margins for better layout consistency */
+  margin: 0px;
 }
 
 .footer-logo {
-  margin-top: 20px; /* Adds space between footer text and logo */
-  max-width: 60px; /* Keeps the image size consistent */
+  margin-top: 0px; 
+  max-width: 60px;
   width: auto;
   height: auto;
 }
