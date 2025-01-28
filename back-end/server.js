@@ -69,7 +69,7 @@ app.get('/atendimentos', (req, res) => {
           a.sexo, 
           a.email, 
           a.celular, 
-          IFNULL(GROUP_CONCAT(e.descricao), '') AS exames
+          IFNULL(GROUP_CONCAT(e.codigo), '') AS exames
       FROM atendimentos a
       LEFT JOIN paciente_exames pe ON a.id = pe.paciente_id
       LEFT JOIN exames e ON pe.exame_id = e.id
@@ -129,7 +129,7 @@ app.get('/relatorios', (req, res) => {
       a.sexo, 
       a.email, 
       a.celular, 
-      IFNULL(GROUP_CONCAT(e.descricao), 'Nenhum') AS exames
+      IFNULL(GROUP_CONCAT(e.codigo), 'Nenhum') AS exames
     FROM atendimentos a
     LEFT JOIN paciente_exames pe ON a.id = pe.paciente_id
     LEFT JOIN exames e ON pe.exame_id = e.id
