@@ -52,6 +52,7 @@ export default function Atendimentos() {
               <thead>
                 <tr>
                   <th>Número do Atendimento</th>
+                  <th>Data de Cadastro</th>
                   <th>Nome do Paciente</th>
                   <th>Sexo</th>
                   <th>Email</th>
@@ -64,6 +65,7 @@ export default function Atendimentos() {
                 {atendimentos.map((atendimento) => (
                   <tr key={atendimento.numero_atendimento}>
                     <td>{atendimento.numero_atendimento}</td>
+                    <td>{atendimento.dataCadastro}</td>
                     <td>{atendimento.nomePaciente}</td>
                     <td>{atendimento.sexo}</td>
                     <td>{atendimento.email}</td>

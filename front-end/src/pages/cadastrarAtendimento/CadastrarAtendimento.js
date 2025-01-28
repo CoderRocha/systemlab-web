@@ -16,18 +16,23 @@ export default function CadastrarAtendimento() {
     email: '',
     celular: '',
     exames: [],
+    dataCadastro: '', // campo para data de cadastro
   });
 
   const [novoExame, setNovoExame] = useState('');
   const [numeroAtendimento, setNumeroAtendimento] = useState(null); // state para o número de atendimento
   const [loading, setLoading] = useState(false); // state para exibir "Carregando..."
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL; // URL do backend do  .env
+  const backendUrl = process.env.REACT_APP_BACKEND_URL; // URL do backend do .env
 
   useEffect(() => {
-    // aqui gera o número de atendimento apenas uma vez quando a página é carregada
+    // Gera o número de atendimento e a data de cadastro apenas uma vez
     const numero = Math.floor(1000 + Math.random() * 9000);
     setNumeroAtendimento(numero);
+
+    const hoje = new Date();
+    const dataFormatada = hoje.toLocaleDateString('pt-BR'); // formato dd/mm/aaaa
+    setFormData((prev) => ({ ...prev, dataCadastro: dataFormatada }));
   }, []);
 
   const handleInputChange = (e) => {
@@ -60,10 +65,10 @@ export default function CadastrarAtendimento() {
     };
 
     try {
-      // aqui acontece a requisição POST para o backend
+      // Requisição POST para o backend
       await axios.post(`${backendUrl}/atendimentos`, atendimentoData);
 
-      // aqui redireciona para a página de atendimentos após salvar o atendimento com sucesso
+      // Redireciona para a página de atendimentos após salvar
       navigate('/atendimentos');
     } catch (error) {
       console.error('Erro ao salvar atendimento:', error);
@@ -79,6 +84,15 @@ export default function CadastrarAtendimento() {
       <div className={styles.container}>
         <h2>Cadastrar Atendimento</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label>Data de Cadastro</label>
+            <input
+              type="text"
+              value={formData.dataCadastro}
+              readOnly
+              className={styles.readOnlyInput}
+            />
+          </div>
           <div className={styles.formGroup}>
             <label>Número do Atendimento</label>
             <input
