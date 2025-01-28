@@ -62,29 +62,29 @@ app.post('/atendimentos', (req, res) => {
 
 // endpoint para listar todos os atendimentos cadastrados
 app.get('/atendimentos', (req, res) => {
-  const sql = `
-      SELECT 
-          a.id AS numero_atendimento, 
-          a.nome_completo AS nomePaciente, 
-          a.sexo, 
-          a.email, 
-          a.celular, 
-          IFNULL(GROUP_CONCAT(e.codigo), '') AS exames
-      FROM atendimentos a
-      LEFT JOIN paciente_exames pe ON a.id = pe.paciente_id
-      LEFT JOIN exames e ON pe.exame_id = e.id
-      GROUP BY a.id
-  `;
-
-  db.all(sql, [], (err, rows) => {
+    const sql = `
+        SELECT 
+            a.id AS numero_atendimento, 
+            a.nome_completo AS nomePaciente, 
+            a.sexo, 
+            a.email, 
+            a.celular, 
+            IFNULL(GROUP_CONCAT(e.codigo, ', '), 'Nenhum') AS exames
+        FROM atendimentos a
+        LEFT JOIN paciente_exames pe ON a.id = pe.paciente_id
+        LEFT JOIN exames e ON pe.exame_id = e.id
+        GROUP BY a.id
+    `;
+  
+    db.all(sql, [], (err, rows) => {
       if (err) {
-          console.error('Erro ao buscar atendimentos:', err.message);
-          return res.status(500).json({ message: 'Erro ao buscar atendimentos.' });
+        console.error('Erro ao buscar atendimentos:', err.message);
+        return res.status(500).json({ message: 'Erro ao buscar atendimentos.' });
       }
-
+  
       res.status(200).json(rows);
+    });
   });
-});
 
 // endpoint para cadastrar um exame
 app.post('/exames', (req, res) => {
@@ -122,29 +122,29 @@ app.get('/exames', (req, res) => {
 
 // endpoint para gerar o relatório de pacientes por data
 app.get('/relatorios', (req, res) => {
-  const sql = `
-    SELECT 
-      a.numero_atendimento AS codigo_paciente, 
-      a.nome_completo, 
-      a.sexo, 
-      a.email, 
-      a.celular, 
-      IFNULL(GROUP_CONCAT(e.codigo), 'Nenhum') AS exames
-    FROM atendimentos a
-    LEFT JOIN paciente_exames pe ON a.id = pe.paciente_id
-    LEFT JOIN exames e ON pe.exame_id = e.id
-    GROUP BY a.id
-  `;
-
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      console.error('Erro ao buscar relatórios:', err.message);
-      return res.status(500).json({ message: 'Erro ao buscar relatórios.' });
-    }
-
-    res.status(200).json(rows);
-  });
-});
+    const sql = `
+      SELECT 
+        a.numero_atendimento AS codigo_paciente, 
+        a.nome_completo, 
+        a.sexo, 
+        a.email, 
+        a.celular, 
+        IFNULL(GROUP_CONCAT(e.codigo, ', '), 'Nenhum') AS exames
+      FROM atendimentos a
+      LEFT JOIN paciente_exames pe ON a.id = pe.paciente_id
+      LEFT JOIN exames e ON pe.exame_id = e.id
+      GROUP BY a.id
+    `;
+  
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        console.error('Erro ao buscar relatórios:', err.message);
+        return res.status(500).json({ message: 'Erro ao buscar relatórios.' });
+      }
+  
+      res.status(200).json(rows);
+    });
+  });  
 
 // config  do servidor local
 const PORT = 5000;
