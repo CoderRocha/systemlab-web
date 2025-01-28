@@ -53,7 +53,7 @@ export default function Atendimentos() {
                 <tr>
                   <th>Número do Atendimento</th>
                   <th>Nome do Paciente</th>
-                  <th></th>
+                  <th>Ação</th>
                 </tr>
               </thead>
               <tbody>
