@@ -16,7 +16,6 @@ export default function CadastrarAtendimento() {
     email: '',
     celular: '',
     exames: [],
-    dataCadastro: '', // campo para data de cadastro
   });
 
   const [novoExame, setNovoExame] = useState('');
@@ -84,15 +83,6 @@ export default function CadastrarAtendimento() {
       <div className={styles.container}>
         <h2>Cadastrar Atendimento</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <div className={styles.formGroup}>
-            <label>Data de Cadastro</label>
-            <input
-              type="text"
-              value={formData.dataCadastro}
-              readOnly
-              className={styles.readOnlyInput}
-            />
-          </div>
           <div className={styles.formGroup}>
             <label>Número do Atendimento</label>
             <input

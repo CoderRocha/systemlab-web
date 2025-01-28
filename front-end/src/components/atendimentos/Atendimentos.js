@@ -52,12 +52,7 @@ export default function Atendimentos() {
               <thead>
                 <tr>
                   <th>Número do Atendimento</th>
-                  <th>Data de Cadastro</th>
                   <th>Nome do Paciente</th>
-                  <th>Sexo</th>
-                  <th>Email</th>
-                  <th>Celular</th>
-                  <th>Exames</th>
                   <th></th>
                 </tr>
               </thead>
@@ -65,15 +60,10 @@ export default function Atendimentos() {
                 {atendimentos.map((atendimento) => (
                   <tr key={atendimento.numero_atendimento}>
                     <td>{atendimento.numero_atendimento}</td>
-                    <td>{atendimento.dataCadastro}</td>
                     <td>{atendimento.nomePaciente}</td>
-                    <td>{atendimento.sexo}</td>
-                    <td>{atendimento.email}</td>
-                    <td>{atendimento.celular}</td>
-                    <td>{atendimento.exames || 'Nenhum'}</td>
                     <td>
-                      <button className={styles.btn} onClick={() => navigate(`/atendimentos/${atendimento.numero_atendimento}`)}>
-                        Acessar
+                      <button className={styles.btndelete} onClick={() => navigate(`/atendimentos/${atendimento.numero_atendimento}`)}>
+                        Deletar
                       </button>
                     </td>
                   </tr>

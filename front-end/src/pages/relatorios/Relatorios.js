@@ -47,7 +47,6 @@ export default function Relatorios() {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>Data de Cadastro</th>
                   <th>Código do Paciente</th>
                   <th>Nome Completo</th>
                   <th>Sexo</th>
@@ -59,7 +58,6 @@ export default function Relatorios() {
               <tbody>
                 {relatorios.map((relatorio, index) => (
                   <tr key={index}>
-                    <td>{new Date(relatorio.data_cadastro).toLocaleDateString()}</td>
                     <td>{relatorio.codigo_paciente}</td>
                     <td>{relatorio.nome_completo}</td>
                     <td>{relatorio.sexo}</td>
