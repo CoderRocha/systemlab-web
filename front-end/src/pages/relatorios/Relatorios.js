@@ -26,7 +26,7 @@ export default function Relatorios() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    fetchRelatorios();  // Refaz a busca de relatórios quando o botão for clicado
+    fetchRelatorios();  // refaz a busca de relatórios quando o botão for clicado
   };
 
   return (
