@@ -64,7 +64,7 @@ app.post('/atendimentos', (req, res) => {
 app.get('/atendimentos', (req, res) => {
     const sql = `
         SELECT 
-            a.id AS numero_atendimento, 
+            a.numero_atendimento AS numero_atendimento, 
             a.nome_completo AS nomePaciente, 
             a.sexo, 
             a.email, 
