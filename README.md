@@ -70,7 +70,7 @@ O sistema evita o cadastro de exames com códigos duplicados, independente se fo
 - Email
 - Celular
 - Exames Cadastrados
-- Valor Total R$
+- Valor Total (R$)
 
 Após gerar o Relatório, o sistema disponibiliza uma opção para Exportar o Relatório Geral em Excel, podendo facilitar o gerenciamento dessas informações diretamente em uma planilha.
 
