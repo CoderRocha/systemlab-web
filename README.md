@@ -34,7 +34,7 @@ Os usuários podem cadastrar atendimentos, e podem inserir informações como:
 - Sexo
 - Email
 - Celular
-- Lista de Exames cadastrados no Atendimento
+- Lista de Exames Cadastrados no Atendimento
 - Opção para Remover o Exame do Atendimento (X)
 
 O sistema evita o cadastro de atendimentos com códigos de exames duplicados, independente se for em maiúsculo ou não.
@@ -65,7 +65,7 @@ O sistema evita o cadastro de exames com códigos duplicados, independente se fo
 É possível gerar um relatório contendo informações Gerais dos atendimentos cadastrados no sistema, como:
 
 - Código do Paciente
-- Nome Completo
+- Nome Completo do Paciente
 - Sexo
 - Email
 - Celular
