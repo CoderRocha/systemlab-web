@@ -88,7 +88,7 @@ Após gerar o Relatório Geral, também é gerado logo abaixo dele um Dashboard 
 - Total de Exames
 - Valor Total dos Exames (R$)
 - Atendimentos por Sexo
-- Exames Realizados
+- Exames Realizados (Por Código de Exame)
 - Ticket Médio (R$)
 
 ## Como Executar o Projeto?
