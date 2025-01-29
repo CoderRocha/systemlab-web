@@ -91,7 +91,7 @@ export default function Relatorios() {
       <Navbar />
       <div className={styles.container}>
         <button className={styles['btn']} onClick={handleClick}>
-          Gerar Relatório
+          Gerar Relatórios
         </button>
 
         {/* baixar o Excel (apenas quando o relatório for gerado) */}
@@ -119,7 +119,7 @@ export default function Relatorios() {
                   <th>Email</th>
                   <th>Celular</th>
                   <th>Exames Cadastrados</th>
-                  <th>Total Valor</th>
+                  <th>Valor Total R$</th>
                 </tr>
               </thead>
               <tbody>
@@ -140,6 +140,11 @@ export default function Relatorios() {
         </div>
         <br />
         {/* Grids parecidas com um Power B.I */}
+        {reportGenerated && (
+          <div className={styles.listContainer}>
+          <h2>Dashboard</h2>
+          </div>
+        )}
         {reportGenerated && (
           <div className={styles.grids}>
             <div className={styles.gridItem}>
@@ -173,6 +178,8 @@ export default function Relatorios() {
           </div>
         )}
       </div>
+      <br />
+      <br />
     </>
   );
 }
