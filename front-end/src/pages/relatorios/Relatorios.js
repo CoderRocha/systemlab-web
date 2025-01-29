@@ -141,7 +141,7 @@ export default function Relatorios() {
         {/* Grids parecidas com um Power B.I */}
         {reportGenerated && (
           <div className={styles.listContainer}>
-          <h2>Dashboard</h2>
+          <h2>Dashboards</h2>
           </div>
         )}
         {reportGenerated && (
@@ -155,7 +155,7 @@ export default function Relatorios() {
               <p>{totalExames}</p>
             </div>
             <div className={styles.gridItem}>
-              <h3>Valor Total de Exames</h3>
+              <h3>Valor Total dos Exames</h3>
               <p>{`R$ ${valorTotalExames.toFixed(2)}`}</p>
             </div>
             <div className={styles.gridItem}>
