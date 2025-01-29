@@ -168,7 +168,7 @@ export default function Relatorios() {
           <h2>Dashboards</h2>
           <p>Relatório com todos os indicadores do negócio, incluindo atendimentos, exames realizados e faturamento.</p>
           {/* exibir mensagem quando não houver relatórios gerados igual no relatório acima */}
-          {!reportGenerated && <p>Não há relatórios disponíveis.</p>}
+          {!reportGenerated && <p>É necessário gerar o "Relatório Geral de Atendimentos" primeiro para poder ter acesso aos Dashboards.</p>}
         </div>
 
         {/* mostrar o botão de export apenas quando o relatório for gerado */}
