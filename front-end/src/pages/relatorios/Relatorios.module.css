@@ -129,27 +129,27 @@ h2 {
 
 /* Cores das caixas das grids */
 .gridItem:nth-child(1) {
-    background-color: rgba(0, 176, 240, 0.85);
-}
-
-.gridItem:nth-child(2) {
-    background-color: rgba(255, 77, 77, 0.85);
-}
-
-.gridItem:nth-child(3) {
-    background-color: rgba(0, 230, 118, 0.85);
-}
-
-.gridItem:nth-child(4) {
     background-color: rgba(0, 120, 255, 0.85);
 }
 
-.gridItem:nth-child(5) {
+.gridItem:nth-child(2) {
     background-color: rgba(220, 20, 60, 0.85);
 }
 
-.gridItem:nth-child(6) {
+.gridItem:nth-child(3) {
     background-color: rgba(0, 150, 0, 0.85);
+}
+
+.gridItem:nth-child(4) {
+    background-color: rgba(0, 176, 240, 0.85);
+}
+
+.gridItem:nth-child(5) {
+    background-color: rgba(255, 77, 77, 0.85);
+}
+
+.gridItem:nth-child(6) {
+    background-color: rgba(0, 230, 118, 0.85);
 }
 
 /* styles do título */
@@ -178,7 +178,8 @@ h2 {
 .gridItem2 {
     display: flex;
     flex-wrap: wrap;
-    gap: 1px; /* valor do gap para reduzir a distância entre os itens */
+    gap: 1px;
+    /* valor do gap para reduzir a distância entre os itens */
 }
 
 .gridItem2 p {
@@ -190,6 +191,8 @@ h2 {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    margin: 0; /* remover margem */
-    padding: 5px 10px; /* ajustar o padding para diminuir o espaço interno */
+    margin: 0;
+    /* remover margem */
+    padding: 5px 10px;
+    /* ajustar o padding para diminuir o espaço interno */
 }
