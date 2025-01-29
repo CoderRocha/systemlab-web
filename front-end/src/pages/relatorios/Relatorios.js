@@ -98,7 +98,12 @@ export default function Relatorios() {
       });
     }
     return acc;
-  }, { Realizados: 0 }); // aqui o objeto fica vazio e será preenchido quando tiver exames realizados
+  }, {});
+
+  // add "Realizados: 0"  se não tiver exames realizados
+  if (Object.keys(examesRealizados).length === 0) {
+    examesRealizados["Realizados"] = '0';
+  }
 
   // aqui funciona o cálculo do ticket médio
   const atendimentosComValor = relatorios.filter(relatorio => relatorio.total_valor != null && relatorio.total_valor > 0);
