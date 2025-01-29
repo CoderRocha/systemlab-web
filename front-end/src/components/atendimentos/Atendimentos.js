@@ -5,6 +5,7 @@ import axios from 'axios';
 // styles
 import styles from './Atendimentos.module.css';
 
+// pages & components
 import Navbar from '../../components/navbar/Navbar';
 
 export default function Atendimentos() {
@@ -38,7 +39,7 @@ export default function Atendimentos() {
       const response = await axios.delete(`${backendUrl}/atendimentos/${numeroAtendimento}`);
       alert(response.data.message);
 
-      // Atualiza a lista de atendimentos removendo o atendimento deletado
+      // updatte a lista de atendimentos e remove o atendimento deletado
       setAtendimentos(atendimentos.filter(atendimento => atendimento.numero_atendimento !== numeroAtendimento));
     } catch (error) {
       console.error('Erro ao deletar atendimento:', error);

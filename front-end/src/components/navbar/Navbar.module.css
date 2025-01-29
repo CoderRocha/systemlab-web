@@ -1,4 +1,3 @@
-/* Container da Navbar */
 .navbar-container {
     display: flex;
     align-items: center;
@@ -10,20 +9,17 @@
     width: 100%;
 }
 
-/* Logo */
 .navbar-logo {
     height: 80px;
     cursor: pointer;
     margin-right: 90px;
 }
 
-/* Navegação */
 .navbar-nav {
     display: flex;
     justify-content: center;
 }
 
-/* Lista de navegação */
 .navbar-list {
     display: flex;
     gap: 30px;
@@ -32,24 +28,21 @@
     margin: 0;
 }
 
-/* Itens da navbar */
 .navbar-item {
     display: flex;
-    flex-direction: column; /* Ícone fica acima do texto */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
 }
 
-/* Ícones */
 .navbar-icon {
-    font-size: 22px; /* Tamanho do ícone */
+    font-size: 22px;
     color: black;
-    margin-bottom: 5px; /* Espaço entre o ícone e o texto */
+    margin-bottom: 5px;
     transition: color 0.3s ease;
 }
 
-/* Links */
 .navbar-link {
     color: black;
     font-size: 16px;
@@ -59,7 +52,6 @@
     transition: color 0.3s ease;
 }
 
-/* Efeito hover */
 .navbar-item:hover .navbar-icon,
 .navbar-item:hover .navbar-link {
     color: #0097b2;

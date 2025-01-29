@@ -68,7 +68,7 @@ h2 {
 .table td {
     border: 1px solid #ddd;
     padding: 10px;
-    text-align: left; /* Alinha o texto à esquerda */
+    text-align: left;
     font-size: small;
 }
 

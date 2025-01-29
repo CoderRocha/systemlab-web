@@ -21,7 +21,7 @@ const Navbar = () => {
                 onClick={() => handleNavigate('/home')}
             />
 
-            {/* Navegação */}
+            {/* Navbar */}
             <nav className={styles['navbar-nav']}>
                 <ul className={styles['navbar-list']}>
                     <li className={styles['navbar-item']} onClick={() => handleNavigate('/atendimentos')}>

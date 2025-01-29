@@ -7,6 +7,7 @@ import * as XLSX from 'xlsx';
 // styles
 import styles from './Exames.module.css';
 
+// pages & components
 import Navbar from '../../components/navbar/Navbar';
 
 export default function Exames() {
@@ -16,7 +17,7 @@ export default function Exames() {
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-  // Função para buscar os exames
+  // buscar os exames
   const fetchExames = async () => {
     try {
       const response = await axios.get(`${backendUrl}/exames`);
@@ -32,12 +33,12 @@ export default function Exames() {
     fetchExames();
   }, []);
 
-  // Função para deletar um exame
+  // deletar um exame
   const handleDelete = async (codigoExame) => {
     try {
       const response = await axios.delete(`${backendUrl}/exames/${codigoExame}`);
       if (response.status === 200) {
-        setExames(exames.filter((exame) => exame.codigo !== codigoExame)); // Remove o exame deletado da lista
+        setExames(exames.filter((exame) => exame.codigo !== codigoExame)); // remove o exame deletado da lista
         alert(response.data.message);
       }
     } catch (error) {
@@ -45,7 +46,7 @@ export default function Exames() {
     }
   };
 
-  // Função para exportar a tabela de exames para Excel
+  // exportar a tabela de exames para Excel
   const downloadExcel = () => {
     const ws = XLSX.utils.json_to_sheet(
       exames.map(({ codigo, descricao, valor }) => ({ Código: codigo, Descrição: descricao, Valor: `R$ ${valor.toFixed(2)}` }))
@@ -60,7 +61,7 @@ export default function Exames() {
       <Navbar />
       <div className={styles.container}>
         <button className={styles['btn']} onClick={() => navigate('/cadastrarexame')}>Criar Novo Exame</button>
-        
+
         {/* exportação para Excel (aparece apenas se houver exames) */}
         {exames.length > 0 && (
           <button className={styles['btnExcel']} onClick={downloadExcel}>

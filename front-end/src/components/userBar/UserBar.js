@@ -12,9 +12,9 @@ const UserBar = () => {
             <span className={styles['user-unit']}>
                 <strong>Unidade:</strong>
                 <select className={styles['user-select']} defaultValue="MAT - MATRIZ">
-                    <option value="MAT - MATRIZ">MAT - MATRIZ</option>
-                    <option value="UNIT2">UNI2 - UNIDADE 2</option>
-                    <option value="UNIT3">UNI3 - UNIDADE 3</option>
+                    <option value="MAT - MATRIZ">MA - MATRIZ</option>
+                    <option value="UNIT2">UN2 - UNIDADE 2</option>
+                    <option value="UNIT3">UN3 - UNIDADE 3</option>
                 </select>
             </span>
         </div>

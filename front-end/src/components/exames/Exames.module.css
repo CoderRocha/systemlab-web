@@ -40,6 +40,7 @@
     justify-content: center;
     justify-items: center;
 }
+
 .btndelete:hover {
     background: #CC0033;
     color: #fff;
@@ -74,7 +75,7 @@ h2 {
 .table th {
     background-color: #f4f4f4;
     font-weight: bold;
-    color: #0097B2; /* Cor destacada para combinar com o botão */
+    color: #0097B2;
 }
 
 .table tr:nth-child(even) {
@@ -84,6 +85,7 @@ h2 {
 .table tr:hover {
     background-color: #f1f1f1;
 }
+
 .btnExcel {
     background-color: #4caf50;
     color: white;
