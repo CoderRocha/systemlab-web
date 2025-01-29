@@ -156,12 +156,17 @@ export default function Relatorios() {
             </table>
           )}
         </div>
-        {/* Grids parecidas com um Power B.I */}
+        {/* Grids parecidas com um Power BI */}
+        <div className={styles.listContainer}>
+          <h2>Dashboards</h2>
+          <p>Relatório com todos os indicadores do negócio, incluindo atendimentos, exames realizados e faturamento.</p>
+          {/* exibir mensagem quando não houver relatórios gerados igual no relatório acima */}
+          {!reportGenerated && <p>Não há relatórios disponíveis.</p>}
+        </div>
+
+        {/* mostrar o botão de export apenas quando o relatório for gerado */}
         {reportGenerated && (
-          <div className={styles.listContainer}>
-            <h2>Dashboards</h2>
-            <p>Relatório com todos os indicadores do negócio, incluindo atendimentos, exames realizados e faturamento.</p>
-            {/* baixar apenas os dados do dashboard */}
+          <div>
             <button className={`${styles.btnExcel}`} onClick={downloadDashboardExcel}>
               <FaFileExcel size={24} style={{ marginRight: '8px' }} />
               Exportar Dashboard
