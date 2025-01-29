@@ -86,7 +86,8 @@ h2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 20px;
+    gap: 30px;
+    /* reduzir o espaçamento */
     margin-top: 30px;
     justify-items: center;
     align-items: stretch;
@@ -99,7 +100,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 8px;
+    padding: 12px;
     border-radius: 10px;
     text-align: center;
     font-size: 1.2rem;
@@ -109,45 +110,46 @@ h2 {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
-    min-height: 120px;
-    min-width: 250px;
-    flex: 1 0 30%;
+    /* aqui garante que todas tenham o mesmo tamanho */
+    min-height: auto;
+    width: 100%;
+    max-width: 300px;
+    /* limite para evitar grids muito largas */
     overflow: hidden;
 }
 
-.gridItem {
-    flex: 1 0 30%;
-}
-
+/* anim ao passar o mouse */
 .gridItem:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Cores das caixas das grids */
 .gridItem:nth-child(1) {
-    background-color: rgba(4, 144, 169, 0.7);
+    background-color: rgba(0, 176, 240, 0.85);
 }
 
 .gridItem:nth-child(2) {
-    background-color: rgba(255, 102, 102, 0.7);
+    background-color: rgba(255, 77, 77, 0.85);
 }
 
 .gridItem:nth-child(3) {
-    background-color: rgba(102, 204, 102, 0.7);
+    background-color: rgba(0, 230, 118, 0.85);
 }
 
 .gridItem:nth-child(4) {
-    background-color: rgba(5, 102, 120, 0.7);
+    background-color: rgba(0, 120, 255, 0.85);
 }
 
 .gridItem:nth-child(5) {
-    background-color: rgba(160, 32, 32, 0.7);
+    background-color: rgba(220, 20, 60, 0.85);
 }
 
 .gridItem:nth-child(6) {
-    background-color: rgba(1, 91, 1, 0.7);
+    background-color: rgba(0, 150, 0, 0.85);
 }
 
+/* styles do título */
 .gridItem h3 {
     font-size: 1.4rem;
     font-weight: 600;
@@ -158,8 +160,20 @@ h2 {
     justify-content: center;
 }
 
+/* styles dos textos */
 .gridItem p {
-    font-size: 1rem;
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.gridItem2 p {
+    font-size: 1.1rem;
     font-weight: 700;
     text-align: center;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);

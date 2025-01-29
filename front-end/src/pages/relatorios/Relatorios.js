@@ -141,7 +141,7 @@ export default function Relatorios() {
         {/* Grids parecidas com um Power B.I */}
         {reportGenerated && (
           <div className={styles.listContainer}>
-          <h2>Dashboards</h2>
+            <h2>Dashboards</h2>
           </div>
         )}
         {reportGenerated && (
@@ -158,19 +158,19 @@ export default function Relatorios() {
               <h3>Valor Total dos Exames</h3>
               <p>{`R$ ${valorTotalExames.toFixed(2)}`}</p>
             </div>
-            <div className={styles.gridItem}>
+            <div className={`${styles.gridItem} ${styles.gridItem2}`}>
               <h3>Atendimentos por Sexo</h3>
               {atendimentosOrdenados.map(([sexo, quantidade]) => (
                 <p key={sexo}>{`${sexo}: ${quantidade}`}</p>
               ))}
             </div>
-            <div className={styles.gridItem}>
+            <div className={`${styles.gridItem} ${styles.gridItem2}`}>
               <h3>Exames Realizados</h3>
               {Object.entries(examesRealizados).map(([exame, quantidade]) => (
                 <p key={exame}>{`${exame}: ${quantidade}`}</p>
               ))}
             </div>
-            <div className={styles.gridItem}>
+            <div className={`${styles.gridItem} ${styles.gridItem2}`}>
               <h3>Ticket Médio</h3>
               <p>{`R$ ${ticketMedio}`}</p>
             </div>
