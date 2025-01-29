@@ -17,8 +17,9 @@ Esse projeto de Sistema para Laboratórios de Análises Clínicas (LIS) foi cria
 
 Foram utilizadas também algumas bibliotecas para complementar as tecnologias citadas acima, como por exemplo:
 
-- Axios
-- XLSX
+- React-Icons (Icons para a U.I)
+- Axios (Conexão HTTP com o Back-End)
+- XLSX (Exportar Tabelas em Excel)
 
 ## Funcionalidades
 
