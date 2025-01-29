@@ -36,10 +36,12 @@ Para acessar os dados do Back-End, você pode acessar as seguintes URLs:
 
 [http://localhost:5000/relatorios](http://localhost:5000/relatorios)
 
-Todas as informações do Banco de Dados serão armazenadas dentro da pasta "db", no arquivo "database.sqlite".
+Todas as informações do Banco de Dados serão armazenadas dentro da pasta "db", no arquivo 'database.sqlite'.
+
+O arquivo 'database.sqlite' é criado automaticamente após iniciar o Servidor no comando que vimos acima.
 
 Caso já tenha inserido alguma informação e queira resetar o banco, teria apenas que encerrar a execução do Back-End, indo no Terminal que está sendo executado o servidor e apertando as seguintes teclas ao mesmo tempo:
 
 ### "CTRL" + "C"
 
-Com isso, o servidor irá parar de ser executado. Agora você pode deletar esse arquivo para resetar o banco de dados e ficar com o sistema "limpo", podendo executar o Servidor novamente após ter realizado esse processo.
+Com isso, vai encerrar a execução do servidor. Agora você pode deletar o arquivo 'database.sqlite' para resetar o banco de dados e ficar com o sistema "limpo", podendo executar o Servidor novamente pelo Terminal para gerar um novo arquivo de banco de dados logo após ter realizado esse processo.
