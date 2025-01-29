@@ -90,6 +90,7 @@ export default function Atendimentos() {
           )}
         </div>
       </div>
+      <br />
     </>
   );
 }
