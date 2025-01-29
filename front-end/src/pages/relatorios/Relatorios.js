@@ -79,9 +79,11 @@ export default function Relatorios() {
 
   // calcular os atendimentos por sexo
   const atendimentosPorSexo = relatorios.reduce((acc, relatorio) => {
-    acc[relatorio.sexo] = (acc[relatorio.sexo] || 0) + 1;
+    const sexo = relatorio.sexo || 'Não informado'; // Garante um valor padrão
+    acc[sexo] = (acc[sexo] || 0) + 1;
     return acc;
-  }, {});
+  }, { Masculino: 0, Feminino: 0 }); // Inicializa com 0
+
 
   const atendimentosOrdenados = Object.entries(atendimentosPorSexo).sort(
     ([sexoA, quantidadeA], [sexoB, quantidadeB]) => quantidadeB - quantidadeA
@@ -96,7 +98,7 @@ export default function Relatorios() {
       });
     }
     return acc;
-  }, {});
+  }, { Realizados: 0 }); // aqui o objeto fica vazio e será preenchido quando tiver exames realizados
 
   // aqui funciona o cálculo do ticket médio
   const atendimentosComValor = relatorios.filter(relatorio => relatorio.total_valor != null && relatorio.total_valor > 0);
