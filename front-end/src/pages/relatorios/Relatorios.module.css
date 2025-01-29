@@ -175,6 +175,12 @@ h2 {
     flex-grow: 1;
 }
 
+.gridItem2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px; /* valor do gap para reduzir a distância entre os itens */
+}
+
 .gridItem2 p {
     font-size: 1.1rem;
     font-weight: 700;
@@ -184,4 +190,6 @@ h2 {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    margin: 0; /* remover margem */
+    padding: 5px 10px; /* ajustar o padding para diminuir o espaço interno */
 }
