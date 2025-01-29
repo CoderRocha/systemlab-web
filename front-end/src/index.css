@@ -1,4 +1,4 @@
-/* Reset styles for consistent box model */
+/* resetar styles global */
 body {
   margin: 0;
   padding: 0;
@@ -10,23 +10,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Code block font styling */
+/* font styling */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Universal box-sizing */
-*, *::before, *::after {
+/* box-sizing universal */
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
-/* Ensure consistent height and width usage */
-html, body {
+/* height and width 100% */
+html,
+body {
   height: 100%;
   width: 100%;
 }
 
-/* Root container styling for app layout consistency */
+/* Root container styling */
 #root {
   display: flex;
   flex-direction: column;
