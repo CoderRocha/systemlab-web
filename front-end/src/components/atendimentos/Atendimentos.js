@@ -17,7 +17,7 @@ export default function Atendimentos() {
   const fetchAtendimentos = async () => {
     try {
       const response = await axios.get(`${backendUrl}/atendimentos`);
-      setAtendimentos(response.data);
+      setAtendimentos(response.data.reverse());
     } catch (error) {
       console.error('Erro ao buscar atendimentos:', error);
     } finally {

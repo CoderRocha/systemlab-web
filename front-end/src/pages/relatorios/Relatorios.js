@@ -16,7 +16,7 @@ export default function Relatorios() {
     try {
       setLoading(true);
       const response = await axios.get(`${backendUrl}/relatorios`);
-      setRelatorios(response.data);
+      setRelatorios(response.data.reverse());
     } catch (error) {
       console.error('Erro ao buscar relatórios:', error);
     } finally {

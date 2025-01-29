@@ -18,7 +18,7 @@ export default function Exames() {
   const fetchExames = async () => {
     try {
       const response = await axios.get(`${backendUrl}/exames`);
-      setExames(response.data);
+      setExames(response.data.reverse());
     } catch (error) {
       console.error('Erro ao buscar exames:', error);
     } finally {
