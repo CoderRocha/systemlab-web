@@ -99,7 +99,7 @@ export default function Relatorios() {
         )}
 
         <div className={styles.listContainer}>
-          <h2>Relatório de Pacientes por Data (Geral)</h2>
+          <h2>Relatório Geral de Pacientes</h2>
           <p>Gere um relatório contendo todas as informações dos atendimentos cadastrados no sistema.</p>
           {loading ? (
             <p>Carregando relatórios...</p>
