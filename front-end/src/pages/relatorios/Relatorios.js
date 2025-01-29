@@ -44,6 +44,24 @@ export default function Relatorios() {
     XLSX.writeFile(wb, 'relatorio_pacientes.xlsx');
   };
 
+  const downloadDashboardExcel = () => {
+    const dashboardData = [
+      { Título: 'Total de Atendimentos', Valor: totalAtendimentos },
+      { Título: 'Total de Exames', Valor: totalExames },
+      { Título: 'Valor Total dos Exames', Valor: `R$ ${valorTotalExames.toFixed(2)}` },
+      { Título: 'Ticket Médio', Valor: `R$ ${ticketMedio}` },
+      ...atendimentosOrdenados.map(([sexo, quantidade]) => ({ Título: `Atendimentos - ${sexo}`, Valor: quantidade })),
+      ...Object.entries(examesRealizados).map(([exame, quantidade]) => ({ Título: `Exames - ${exame}`, Valor: quantidade })),
+    ];
+
+    const ws = XLSX.utils.json_to_sheet(dashboardData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Dashboard');
+
+    XLSX.writeFile(wb, 'dashboard.xlsx');
+  };
+
+
   // calcular os atendimentos totais
   const totalAtendimentos = relatorios.length;
 
@@ -104,7 +122,7 @@ export default function Relatorios() {
 
         <div className={styles.listContainer}>
           <h2>Relatório Geral de Atendimentos</h2>
-          <p>Gere um relatório contendo todas as informações dos atendimentos cadastrados no sistema.</p>
+          <p>Relatório detalhado de todos os atendimentos cadastrados no sistema.</p>
           {loading ? (
             <p>Carregando relatórios...</p>
           ) : relatorios.length === 0 ? (
@@ -142,6 +160,12 @@ export default function Relatorios() {
         {reportGenerated && (
           <div className={styles.listContainer}>
             <h2>Dashboards</h2>
+            <p>Relatório com todos os indicadores do negócio, incluindo atendimentos, exames realizados e faturamento.</p>
+            {/* baixar apenas os dados do dashboard */}
+            <button className={`${styles.btnExcel}`} onClick={downloadDashboardExcel}>
+              <FaFileExcel size={24} style={{ marginRight: '8px' }} />
+              Exportar Dashboard
+            </button>
           </div>
         )}
         {reportGenerated && (
