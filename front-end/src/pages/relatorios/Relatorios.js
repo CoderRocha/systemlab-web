@@ -94,7 +94,7 @@ export default function Relatorios() {
         {reportGenerated && (
           <button className={styles['btnExcel']} onClick={downloadExcel}>
             <FaFileExcel size={24} style={{ marginRight: '8px' }} />
-            Baixar Excel
+            Exportar Relatório
           </button>
         )}
 
