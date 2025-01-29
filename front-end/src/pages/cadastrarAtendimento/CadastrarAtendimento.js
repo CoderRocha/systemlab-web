@@ -26,7 +26,7 @@ export default function CadastrarAtendimento() {
   const backendUrl = process.env.REACT_APP_BACKEND_URL; // URL do backend do .env
 
   useEffect(() => {
-    // gera o número de atendimento e a data de cadastro apenas uma vez
+    // gera o número de atendimento apenas uma vez
     const numero = Math.floor(1000 + Math.random() * 9000);
     setNumeroAtendimento(numero);
   }, []);
