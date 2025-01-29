@@ -7,6 +7,7 @@ import styles from './CadastrarAtendimento.module.css';
 
 // pages & components
 import Navbar from '../../components/navbar/Navbar';
+import { RiCloseCircleLine } from 'react-icons/ri'; // Importe o ícone
 
 export default function CadastrarAtendimento() {
   const navigate = useNavigate();
@@ -61,7 +62,15 @@ export default function CadastrarAtendimento() {
         alert('Código de exame inválido ou não encontrado.');
       }
     }
-  };  
+  };
+
+  // Função para remover o exame
+  const handleRemoveExame = (exame) => {
+    setFormData({
+      ...formData,
+      exames: formData.exames.filter((e) => e !== exame),
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -166,7 +175,13 @@ export default function CadastrarAtendimento() {
             </div>
             <ul className={styles.exameList}>
               {formData.exames.map((exame, index) => (
-                <li className={styles.liexame} key={index}>{exame}</li>
+                <li className={styles.liexame} key={index}>
+                  {exame}
+                  <RiCloseCircleLine 
+                    className={styles.removeExameBtn} 
+                    onClick={() => handleRemoveExame(exame)} 
+                  />
+                </li>
               ))}
             </ul>
           </div>

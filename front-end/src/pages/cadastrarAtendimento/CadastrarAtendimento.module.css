@@ -100,3 +100,11 @@ select:focus {
 .btn:hover {
     background: #007a92;
 }
+.removeExameBtn {
+    cursor: pointer;
+    color: red;
+    margin-left: 10px;
+  }
+  .removeExameBtn:hover {
+    color: darkred;
+  }  
