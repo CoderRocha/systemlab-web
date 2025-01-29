@@ -39,7 +39,7 @@ db.serialize(() => {
           FOREIGN KEY(paciente_id) REFERENCES atendimentos(id),
           FOREIGN KEY(exame_id) REFERENCES exames(id)
       )
-  `);  
+  `);
 });
 
 module.exports = db;
