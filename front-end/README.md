@@ -21,3 +21,5 @@ Você pode acessar diretamente por esse Link: [http://localhost:3000](http://loc
 ## Próximo Passo
 
 Para o Projeto funcionar corretamente e poder desfrutar de todas as funcionalidades dele, acesse a pasta 'Back-End' e verifique o README.md contido nessa pasta para instalar os arquivos necessários e rodar o Servidor Local do Projeto em conjunto com o Front-End.
+
+Caso tenha alguma alteração no Servidor ou no Banco de Dados, teria apenas que atualizar a página para o Front-End fazer a requisição corretamente novamente para o Back-End.
