@@ -39,20 +39,29 @@ export default function CadastrarAtendimento() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleAddExame = () => {
+  const handleAddExame = async () => {
     if (novoExame.trim()) {
-      const exameJaExiste = formData.exames.some(
-        (exame) => exame.toLowerCase() === novoExame.toLowerCase()
-      );
-
-      if (!exameJaExiste) {
-        setFormData({ ...formData, exames: [...formData.exames, novoExame] });
-        setNovoExame('');
-      } else {
-        alert('Este exame já foi adicionado à lista.');
+      try {
+        // Verifica se o exame existe no sistema
+        const response = await axios.get(`${backendUrl}/exames/${novoExame}`);
+  
+        if (response.status === 200) {
+          const exameJaExiste = formData.exames.some(
+            (exame) => exame.toLowerCase() === novoExame.toLowerCase()
+          );
+  
+          if (!exameJaExiste) {
+            setFormData({ ...formData, exames: [...formData.exames, novoExame] });
+            setNovoExame('');
+          } else {
+            alert('Este exame já foi adicionado à lista.');
+          }
+        }
+      } catch (error) {
+        alert('Código de exame inválido ou não encontrado.');
       }
     }
-  };
+  };  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

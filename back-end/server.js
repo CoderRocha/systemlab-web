@@ -188,6 +188,26 @@ app.get('/exames', (req, res) => {
     });
 });
 
+// Endpoint para verificar a existência de um exame pelo código
+app.get('/exames/:codigo', (req, res) => {
+    const { codigo } = req.params;
+    
+    const sqlCheckExame = `SELECT id FROM exames WHERE codigo = ?`;
+  
+    db.get(sqlCheckExame, [codigo], (err, row) => {
+      if (err) {
+        console.error('Erro ao verificar exame:', err.message);
+        return res.status(500).json({ message: 'Erro ao verificar exame.' });
+      }
+  
+      if (row) {
+        res.status(200).json({ message: 'Exame encontrado.' });
+      } else {
+        res.status(404).json({ message: 'Exame não encontrado.' });
+      }
+    });
+  });
+
 // endpoint para gerar o relatório de pacientes por data
 app.get('/relatorios', (req, res) => {
     const sql = `
