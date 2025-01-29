@@ -2,7 +2,7 @@
 
 ## Sistema para Laboratórios de Análises Clínicas
 
-Esse projeto de Sistema para Laboratórios de Análises Clínicas (LIS) foi criado por mim (Guilherme Rocha), e batizado de SystemLab Web.
+Esse projeto de Sistema para Laboratórios de Análises Clínicas (LIS) foi criado por mim, Guilherme Rocha, e batizei ele de "SystemLab Web".
 
 É uma versão atualizada de meu antigo projeto Systemlab, onde é possível Criar e Gerenciar Cadastros de Atendimentos de Pacientes, Exames, Relatórios Gerais contendo informações dos atendimentos cadastrados no sistema e Dashboards mostrando os números totais do laboratório referente a operação do negócio no geral.
 
@@ -34,7 +34,7 @@ Os usuários podem cadastrar atendimentos, e podem inserir informações como:
 - Sexo
 - Email
 - Celular
-- Lista de Exames cadastrados no Atendimento
+- Lista de Exames Cadastrados no Atendimento
 - Opção para Remover o Exame do Atendimento (X)
 
 O sistema evita o cadastro de atendimentos com códigos de exames duplicados, independente se for em maiúsculo ou não.
@@ -65,7 +65,7 @@ O sistema evita o cadastro de exames com códigos duplicados, independente se fo
 É possível gerar um relatório contendo informações Gerais dos atendimentos cadastrados no sistema, como:
 
 - Código do Paciente
-- Nome Completo
+- Nome Completo do Paciente
 - Sexo
 - Email
 - Celular
