@@ -84,11 +84,14 @@ h2 {
 
 /* styles das Grids */
 .grids {
-    display: flex;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    grid-template-rows: repeat(2, 1fr); /* 2 linhas */
+    gap: 20px; /* Ajuste o espaçamento entre as caixas */
     margin-top: 30px;
-    justify-content: space-between;
-    /* grids distribuidas uniformemente */
+    justify-items: center; /* centraliza os itens nas células */
+    align-items: stretch; /* Garante que as grids se estiquem para preencher as células */
+    height: 500px; /* Ajuste o tamanho total das grids para ser mais compacto */
 }
 
 /* styles de cada item das grids */
@@ -97,63 +100,75 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex: 1;
-    padding: 5px;
+    padding: 8px; /* Reduzi o padding para diminuir o tamanho das caixas */
     border-radius: 10px;
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* Reduzi a fonte para ajustar o tamanho total */
     background-color: rgba(4, 144, 169, 0.7);
-    /* fundo semi-transparente azul */
     color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 180px;
-    /* altura fixa para manter tudo alinhado */
-    gap: 8px;
-    /* space entre h3 e p */
+    height: 100%; /* Garante que as caixas estiquem conforme necessário */
+    min-height: 120px; /* Reduzi o valor mínimo da altura */
+    min-width: 250px; /* Reduzi o valor mínimo da largura */
+    flex: 1 0 30%; /* Garante que as caixas tenham o mesmo tamanho */
+    overflow: hidden; /* Garante que o conteúdo não ultrapasse as caixas */
 }
 
+/* Ajuste para garantir que todas as caixas tenham o mesmo tamanho */
+.gridItem {
+    flex: 1 0 30%; /* Isso assegura que todas as caixas tenham o mesmo tamanho */
+}
+
+/* Efeito de hover */
 .gridItem:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    /* sombra mais forte ao passar o mouse */
 }
 
-/* primeira grid (azul) */
+/* Aplique cores específicas às grids */
 .gridItem:nth-child(1) {
     background-color: rgba(4, 144, 169, 0.7);
 }
 
-/* segunda grid (vermelho) */
 .gridItem:nth-child(2) {
     background-color: rgba(255, 102, 102, 0.7);
 }
 
-/* terceira grid (verde) */
 .gridItem:nth-child(3) {
     background-color: rgba(102, 204, 102, 0.7);
 }
 
+.gridItem:nth-child(4) {
+    background-color: rgba(5, 102, 120, 0.7); /* cor para a quarta grid */
+}
+
+.gridItem:nth-child(5) {
+    background-color: rgba(160, 32, 32, 0.7); /* cor para a quinta grid */
+}
+
+.gridItem:nth-child(6) {
+    background-color: rgba(1, 91, 1, 0.7); /* cor para a sexta grid */
+}
+
 .gridItem h3 {
-    font-size: 1.6rem;
+    font-size: 1.4rem; /* Ajustei a fonte do título para um tamanho mais adequado */
     font-weight: 600;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    height: 40px;
-    /* altura fixa para garantir o alinhamento correto */
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .gridItem p {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Ajustei o tamanho da fonte do parágrafo */
     font-weight: 700;
     text-align: center;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    flex-grow: 1;
-    /* agora aqui garante que p ocupe o espaço restante de forma uniforme */
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-grow: 1; /* Garante que o p ocupe o espaço restante uniformemente */
 }

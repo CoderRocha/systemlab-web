@@ -44,19 +44,43 @@ export default function Relatorios() {
   };
 
   // Calcular os totais
-const totalAtendimentos = relatorios.length;
+  const totalAtendimentos = relatorios.length;
 
-// Ajuste para calcular corretamente o total de exames
-const totalExames = relatorios.reduce((acc, relatorio) => {
-  if (relatorio.exames) {
-    // Verificar se 'exames' é uma string (e converter em array)
-    const examesArray = Array.isArray(relatorio.exames) ? relatorio.exames : relatorio.exames.split(',').map(exame => exame.trim());
-    return acc + examesArray.length; // Soma a quantidade de exames
-  }
-  return acc;
-}, 0);
+  // Ajuste para calcular corretamente o total de exames
+  const totalExames = relatorios.reduce((acc, relatorio) => {
+    if (relatorio.exames) {
+      // Verificar se 'exames' é uma string (e converter em array)
+      const examesArray = Array.isArray(relatorio.exames) ? relatorio.exames : relatorio.exames.split(',').map(exame => exame.trim());
+      return acc + examesArray.length; // Soma a quantidade de exames
+    }
+    return acc;
+  }, 0);
 
-const valorTotalExames = relatorios.reduce((acc, relatorio) => acc + (relatorio.total_valor || 0), 0);
+  const valorTotalExames = relatorios.reduce((acc, relatorio) => acc + (relatorio.total_valor || 0), 0);
+
+  // Calcular atendimentos por sexo
+  const atendimentosPorSexo = relatorios.reduce((acc, relatorio) => {
+    acc[relatorio.sexo] = (acc[relatorio.sexo] || 0) + 1;
+    return acc;
+  }, {});
+
+  const atendimentosOrdenados = Object.entries(atendimentosPorSexo).sort(
+    ([sexoA, quantidadeA], [sexoB, quantidadeB]) => quantidadeB - quantidadeA
+  );
+
+  // Calcular exames realizados por código
+  const examesRealizados = relatorios.reduce((acc, relatorio) => {
+    if (relatorio.exames) {
+      const examesArray = Array.isArray(relatorio.exames) ? relatorio.exames : relatorio.exames.split(',').map(exame => exame.trim());
+      examesArray.forEach(exame => {
+        acc[exame] = (acc[exame] || 0) + 1;
+      });
+    }
+    return acc;
+  }, {});
+
+  // Calcular ticket médio
+  const ticketMedio = totalAtendimentos > 0 ? (valorTotalExames / totalAtendimentos).toFixed(2) : 0;
 
   return (
     <>
@@ -65,7 +89,7 @@ const valorTotalExames = relatorios.reduce((acc, relatorio) => acc + (relatorio.
         <button className={styles['btn']} onClick={handleClick}>
           Gerar Relatório
         </button>
-        
+
         {/* ícone para baixar o Excel (apenas quando o relatório for gerado) */}
         {reportGenerated && (
           <button className={styles['btnExcel']} onClick={downloadExcel}>
@@ -125,6 +149,22 @@ const valorTotalExames = relatorios.reduce((acc, relatorio) => acc + (relatorio.
             <div className={styles.gridItem}>
               <h3>Valor Total de Exames</h3>
               <p>{`R$ ${valorTotalExames.toFixed(2)}`}</p>
+            </div>
+            <div className={styles.gridItem}>
+              <h3>Atendimentos por Sexo</h3>
+              {atendimentosOrdenados.map(([sexo, quantidade]) => (
+                <p key={sexo}>{`${sexo}: ${quantidade}`}</p>
+              ))}
+            </div>
+            <div className={styles.gridItem}>
+              <h3>Exames Realizados</h3>
+              {Object.entries(examesRealizados).map(([exame, quantidade]) => (
+                <p key={exame}>{`${exame}: ${quantidade}`}</p>
+              ))}
+            </div>
+            <div className={styles.gridItem}>
+              <h3>Ticket Médio</h3>
+              <p>{`R$ ${ticketMedio}`}</p>
             </div>
           </div>
         )}
