@@ -80,7 +80,10 @@ export default function Relatorios() {
   }, {});
 
   // Calcular ticket médio
-  const ticketMedio = totalAtendimentos > 0 ? (valorTotalExames / totalAtendimentos).toFixed(2) : 0;
+  const atendimentosComValor = relatorios.filter(relatorio => relatorio.total_valor != null && relatorio.total_valor > 0);
+  const totalValorExamesComValor = atendimentosComValor.reduce((acc, relatorio) => acc + relatorio.total_valor, 0);
+  const ticketMedio = atendimentosComValor.length > 0 ? (totalValorExamesComValor / atendimentosComValor.length).toFixed(2) : 0;
+
 
   return (
     <>
@@ -90,7 +93,7 @@ export default function Relatorios() {
           Gerar Relatório
         </button>
 
-        {/* ícone para baixar o Excel (apenas quando o relatório for gerado) */}
+        {/* baixar o Excel (apenas quando o relatório for gerado) */}
         {reportGenerated && (
           <button className={styles['btnExcel']} onClick={downloadExcel}>
             <FaFileExcel size={24} style={{ marginRight: '8px' }} />
