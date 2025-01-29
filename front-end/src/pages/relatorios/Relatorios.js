@@ -41,7 +41,7 @@ export default function Relatorios() {
     XLSX.utils.book_append_sheet(wb, ws, 'Relatórios');
 
     // gerar arquivo Excel e baixar
-    XLSX.writeFile(wb, 'relatorio_pacientes.xlsx');
+    XLSX.writeFile(wb, 'relatorio_atendimentos.xlsx');
   };
 
   const downloadDashboardExcel = () => {
@@ -58,7 +58,7 @@ export default function Relatorios() {
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Dashboard');
 
-    XLSX.writeFile(wb, 'dashboard.xlsx');
+    XLSX.writeFile(wb, 'dashboards.xlsx');
   };
 
 
