@@ -4,10 +4,10 @@ import axios from 'axios';
 import { FaFileExcel } from 'react-icons/fa';
 import * as XLSX from 'xlsx';
 
-// styles
+//styles
 import styles from './Exames.module.css';
 
-// pages & components
+//pages & components
 import Navbar from '../../components/navbar/Navbar';
 
 export default function Exames() {
