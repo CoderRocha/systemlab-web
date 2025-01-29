@@ -43,6 +43,21 @@ export default function Relatorios() {
     XLSX.writeFile(wb, 'relatorio_pacientes.xlsx');
   };
 
+  // Calcular os totais
+const totalAtendimentos = relatorios.length;
+
+// Ajuste para calcular corretamente o total de exames
+const totalExames = relatorios.reduce((acc, relatorio) => {
+  if (relatorio.exames) {
+    // Verificar se 'exames' é uma string (e converter em array)
+    const examesArray = Array.isArray(relatorio.exames) ? relatorio.exames : relatorio.exames.split(',').map(exame => exame.trim());
+    return acc + examesArray.length; // Soma a quantidade de exames
+  }
+  return acc;
+}, 0);
+
+const valorTotalExames = relatorios.reduce((acc, relatorio) => acc + (relatorio.total_valor || 0), 0);
+
   return (
     <>
       <Navbar />
@@ -95,6 +110,24 @@ export default function Relatorios() {
             </table>
           )}
         </div>
+        <br />
+        {/* Grids B.I */}
+        {reportGenerated && (
+          <div className={styles.grids}>
+            <div className={styles.gridItem}>
+              <h3>Total de Atendimentos</h3>
+              <p>{totalAtendimentos}</p>
+            </div>
+            <div className={styles.gridItem}>
+              <h3>Total de Exames</h3>
+              <p>{totalExames}</p>
+            </div>
+            <div className={styles.gridItem}>
+              <h3>Valor Total de Exames</h3>
+              <p>{`R$ ${valorTotalExames.toFixed(2)}`}</p>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
