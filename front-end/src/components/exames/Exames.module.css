@@ -84,3 +84,17 @@ h2 {
 .table tr:hover {
     background-color: #f1f1f1;
 }
+.btnExcel {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.btnExcel:hover {
+    background-color: #45a049;
+}

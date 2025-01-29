@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FaFileExcel } from 'react-icons/fa';
+import * as XLSX from 'xlsx';
 
 // styles
 import styles from './Exames.module.css';
@@ -43,16 +45,30 @@ export default function Exames() {
     }
   };
 
-  // Função para redirecionar para a página de cadastro de exame
-  const handleClick = () => {
-    navigate('/cadastrarexame');
+  // Função para exportar a tabela de exames para Excel
+  const downloadExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(
+      exames.map(({ codigo, descricao, valor }) => ({ Código: codigo, Descrição: descricao, Valor: `R$ ${valor.toFixed(2)}` }))
+    );
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Exames');
+    XLSX.writeFile(wb, 'exames_cadastrados.xlsx');
   };
 
   return (
     <>
       <Navbar />
       <div className={styles.container}>
-        <button className={styles['btn']} onClick={handleClick}>Criar Novo Exame</button>
+        <button className={styles['btn']} onClick={() => navigate('/cadastrarexame')}>Criar Novo Exame</button>
+        
+        {/* exportação para Excel (aparece apenas se houver exames) */}
+        {exames.length > 0 && (
+          <button className={styles['btnExcel']} onClick={downloadExcel}>
+            <FaFileExcel size={24} style={{ marginRight: '8px' }} />
+            Baixar Excel
+          </button>
+        )}
+
         <div className={styles.listContainer}>
           <h2>Exames Cadastrados</h2>
           <p>Listagem contendo todos os exames cadastrados no sistema.</p>
