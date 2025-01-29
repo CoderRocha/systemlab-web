@@ -217,22 +217,24 @@ app.get('/relatorios', (req, res) => {
         a.sexo, 
         a.email, 
         a.celular, 
-        IFNULL(GROUP_CONCAT(e.codigo, ', '), 'Nenhum') AS exames
+        GROUP_CONCAT(e.codigo) AS exames,  -- Concatena os códigos dos exames
+        SUM(e.valor) AS total_valor        -- Soma os valores dos exames encontrados
       FROM atendimentos a
       LEFT JOIN paciente_exames pe ON a.id = pe.paciente_id
       LEFT JOIN exames e ON pe.exame_id = e.id
       GROUP BY a.id
     `;
-  
+    
     db.all(sql, [], (err, rows) => {
       if (err) {
         console.error('Erro ao buscar relatórios:', err.message);
         return res.status(500).json({ message: 'Erro ao buscar relatórios.' });
       }
   
+      console.log('Relatórios retornados:', rows); // Verificar a resposta no backend
       res.status(200).json(rows);
     });
-});  
+  });   
 
 // configuração do servidor local
 const PORT = 5000;

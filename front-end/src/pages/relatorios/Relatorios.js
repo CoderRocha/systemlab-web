@@ -37,7 +37,7 @@ export default function Relatorios() {
           Gerar Relatório
         </button>
         <div className={styles.listContainer}>
-          <h2>Relatório de Pacientes por Data (Geral)</h2>
+          <h2>Relatório Geral de Pacientes</h2>
           <p>Gere um relatório contendo todas as informações dos atendimentos cadastrados no sistema.</p>
           {loading ? (
             <p>Carregando relatórios...</p>
@@ -53,6 +53,7 @@ export default function Relatorios() {
                   <th>Email</th>
                   <th>Celular</th>
                   <th>Exames Cadastrados</th>
+                  <th>Valor Total R$</th> {/* Nova coluna para exibir o valor total */}
                 </tr>
               </thead>
               <tbody>
@@ -63,7 +64,8 @@ export default function Relatorios() {
                     <td>{relatorio.sexo}</td>
                     <td>{relatorio.email}</td>
                     <td>{relatorio.celular}</td>
-                    <td>{relatorio.exames}</td>
+                    <td>{relatorio.exames ? relatorio.exames : 'Nenhum'}</td> {/* Verifica se exames existem */}
+                    <td>{relatorio.total_valor != null ? `R$ ${relatorio.total_valor.toFixed(2)}` : 'Sem Valor'}</td> {/* Verifica se total_valor existe */}
                   </tr>
                 ))}
               </tbody>
