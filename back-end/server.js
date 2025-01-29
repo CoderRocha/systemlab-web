@@ -231,7 +231,6 @@ app.get('/relatorios', (req, res) => {
         return res.status(500).json({ message: 'Erro ao buscar relatórios.' });
       }
   
-      console.log('Relatórios retornados:', rows); // Verificar a resposta no backend
       res.status(200).json(rows);
     });
   });   
