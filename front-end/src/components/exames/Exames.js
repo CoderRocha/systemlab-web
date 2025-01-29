@@ -65,7 +65,7 @@ export default function Exames() {
         {exames.length > 0 && (
           <button className={styles['btnExcel']} onClick={downloadExcel}>
             <FaFileExcel size={24} style={{ marginRight: '8px' }} />
-            Baixar Excel
+            Exportar Exames
           </button>
         )}
 
