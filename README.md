@@ -15,6 +15,11 @@ Esse projeto de Sistema para Laboratórios de Análises Clínicas (LIS) foi cria
 - Node.js
 - SQLite
 
+Foram utilizadas também algumas bibliotecas para complementar as tecnologias citadas acima, como por exemplo:
+
+- Axios
+- XLSX
+
 ## Funcionalidades
 
 ### Listagem de Atendimentos
