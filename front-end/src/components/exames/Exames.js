@@ -72,7 +72,7 @@ export default function Exames() {
 
         <div className={styles.listContainer}>
           <h2>Exames Cadastrados</h2>
-          <p>Listagem contendo todos os exames cadastrados no sistema.</p>
+          <p>Lista de exames cadastrados no sistema</p>
           {loading ? (
             <p>Carregando exames...</p>
           ) : exames.length === 0 ? (
