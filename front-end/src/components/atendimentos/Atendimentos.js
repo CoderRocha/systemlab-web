@@ -56,7 +56,7 @@ export default function Atendimentos() {
         </button>
         <div className={styles.listContainer}>
           <h2>Listagem de Atendimentos</h2>
-          <p>Listagem contendo todos os atendimentos cadastrados no sistema.</p>
+          <p>Lista de atendimentos cadastrados no sistema.</p>
           {loading ? (
             <p>Carregando atendimentos...</p>
           ) : atendimentos.length === 0 ? (
