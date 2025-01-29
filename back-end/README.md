@@ -38,8 +38,8 @@ Para acessar os dados do Back-End, você pode acessar as seguintes URLs:
 
 Todas as informações do Banco de Dados serão armazenadas dentro da pasta "db", no arquivo "database.sqlite".
 
-Caso já tenha inserido algumas informações e queira resetar o banco, teria apenas que encerrar a execução do Back-End, apertando as seguintes teclas ao mesmo tempo:
+Caso já tenha inserido alguma informação e queira resetar o banco, teria apenas que encerrar a execução do Back-End, indo no Terminal que está sendo executado o servidor e apertando as seguintes teclas ao mesmo tempo:
 
 ### "CTRL" + "C"
 
-Com isso, o servidor irá parar de ser executado. Agora você pode deletar esse arquivo para resetar o banco de dados e ficar com o sistema "limpo".
+Com isso, o servidor irá parar de ser executado. Agora você pode deletar esse arquivo para resetar o banco de dados e ficar com o sistema "limpo", podendo executar o Servidor novamente após ter realizado esse processo.
