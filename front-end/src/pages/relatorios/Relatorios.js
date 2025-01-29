@@ -46,12 +46,12 @@ export default function Relatorios() {
 
   const downloadDashboardExcel = () => {
     const dashboardData = [
-      { Título: 'Total de Atendimentos', Valor: totalAtendimentos },
-      { Título: 'Total de Exames', Valor: totalExames },
-      { Título: 'Valor Total dos Exames', Valor: `R$ ${valorTotalExames.toFixed(2)}` },
-      { Título: 'Ticket Médio', Valor: `R$ ${ticketMedio}` },
-      ...atendimentosOrdenados.map(([sexo, quantidade]) => ({ Título: `Atendimentos - ${sexo}`, Valor: quantidade })),
-      ...Object.entries(examesRealizados).map(([exame, quantidade]) => ({ Título: `Exames - ${exame}`, Valor: quantidade })),
+      { Tipo: 'Total de Atendimentos', Quantidade: totalAtendimentos },
+      { Tipo: 'Total de Exames', Quantidade: totalExames },
+      { Tipo: 'Valor Total dos Exames', Quantidade: `R$ ${valorTotalExames.toFixed(2)}` },
+      { Tipo: 'Ticket Médio', Quantidade: `R$ ${ticketMedio}` },
+      ...atendimentosOrdenados.map(([sexo, quantidade]) => ({ Tipo: `Atendimentos - ${sexo}`, Quantidade: quantidade })),
+      ...Object.entries(examesRealizados).map(([exame, quantidade]) => ({ Tipo: `Exames - ${exame}`, Quantidade: quantidade })),
     ];
 
     const ws = XLSX.utils.json_to_sheet(dashboardData);
