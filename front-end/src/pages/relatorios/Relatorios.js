@@ -53,7 +53,7 @@ export default function Relatorios() {
                   <th>Email</th>
                   <th>Celular</th>
                   <th>Exames Cadastrados</th>
-                  <th>Valor Total R$</th> {/* Nova coluna para exibir o valor total */}
+                  <th>Valor Total R$</th>
                 </tr>
               </thead>
               <tbody>
