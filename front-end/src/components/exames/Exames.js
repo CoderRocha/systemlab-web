@@ -2,35 +2,48 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-//styles
+// styles
 import styles from './Exames.module.css';
 
 import Navbar from '../../components/navbar/Navbar';
 
 export default function Exames() {
-  const navigate = useNavigate(); // Initialize useNavigate
-  const [exames, setExames] = useState([]); // state para armazenar os exames
-  const [loading, setLoading] = useState(true); // state para mostrar carregamento
+  const navigate = useNavigate();
+  const [exames, setExames] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-  // function para buscar os exames do backend
+  // Função para buscar os exames
   const fetchExames = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/exames`); // requisição GET
-      setExames(response.data); // update o state com os dados retornados
+      const response = await axios.get(`${backendUrl}/exames`);
+      setExames(response.data);
     } catch (error) {
       console.error('Erro ao buscar exames:', error);
     } finally {
-      setLoading(false); // finaliza o state de carregamento
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchExames(); // aqui busca os exames ao carregar a página
+    fetchExames();
   }, []);
 
-  // function  para redirecionar para a página de cadastro de exame
+  // Função para deletar um exame
+  const handleDelete = async (codigoExame) => {
+    try {
+      const response = await axios.delete(`${backendUrl}/exames/${codigoExame}`);
+      if (response.status === 200) {
+        setExames(exames.filter((exame) => exame.codigo !== codigoExame)); // Remove o exame deletado da lista
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error('Erro ao deletar exame:', error);
+    }
+  };
+
+  // Função para redirecionar para a página de cadastro de exame
   const handleClick = () => {
     navigate('/cadastrarexame');
   };
@@ -59,12 +72,12 @@ export default function Exames() {
               </thead>
               <tbody>
                 {exames.map((exame) => (
-                  <tr key={exame.id}>
+                  <tr key={exame.codigo}>
                     <td>{exame.codigo}</td>
                     <td>{exame.descricao}</td>
                     <td>{`R$ ${exame.valor.toFixed(2)}`}</td>
                     <td>
-                      <button className={styles.btndelete} onClick={''}>
+                      <button className={styles.btndelete} onClick={() => handleDelete(exame.codigo)}>
                         Deletar
                       </button>
                     </td>

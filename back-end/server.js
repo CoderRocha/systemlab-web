@@ -153,6 +153,27 @@ app.post('/exames', (req, res) => {
     });
 });
 
+// endpoint para deletar um exame
+app.delete('/exames/:codigo', (req, res) => {
+    const { codigo } = req.params;
+  
+    // Deletar o exame
+    const sqlDeleteExame = `DELETE FROM exames WHERE codigo = ?`;
+  
+    db.run(sqlDeleteExame, [codigo], function (err) {
+      if (err) {
+        console.error('Erro ao deletar exame:', err.message);
+        return res.status(500).json({ message: 'Erro ao deletar exame.' });
+      }
+  
+      if (this.changes === 0) {
+        return res.status(404).json({ message: 'Exame não encontrado.' });
+      }
+  
+      res.status(200).json({ message: 'Exame deletado com sucesso!' });
+    });
+  });  
+
 // endpoint para listar todos os exames cadastrados
 app.get('/exames', (req, res) => {
     const sql = `SELECT codigo, descricao, valor FROM exames`;
