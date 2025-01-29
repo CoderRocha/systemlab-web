@@ -169,7 +169,7 @@ export default function Relatorios() {
           <div>
             <button className={`${styles.btnExcel}`} onClick={downloadDashboardExcel}>
               <FaFileExcel size={24} style={{ marginRight: '8px' }} />
-              Exportar Dashboard
+              Exportar Dashboards
             </button>
           </div>
         )}
