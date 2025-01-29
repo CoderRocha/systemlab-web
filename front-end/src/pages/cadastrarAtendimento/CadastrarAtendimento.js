@@ -41,19 +41,22 @@ export default function CadastrarAtendimento() {
   };
 
   const handleAddExame = async () => {
-    if (novoExame.trim()) {
+    const exameTrimmed = novoExame.trim(); // Remove espaços extras
+
+    if (exameTrimmed) { // Verifica se o exame não é vazio após o trim()
       try {
         // Verifica se o exame existe no sistema
-        const response = await axios.get(`${backendUrl}/exames/${novoExame}`);
-  
+        const response = await axios.get(`${backendUrl}/exames/${exameTrimmed}`);
+
         if (response.status === 200) {
+          // Verifica se o exame já foi adicionado (tratando maiúsculas/minúsculas e espaços)
           const exameJaExiste = formData.exames.some(
-            (exame) => exame.toLowerCase() === novoExame.toLowerCase()
+            (exame) => exame.trim().toLowerCase() === exameTrimmed.toLowerCase()
           );
-  
+
           if (!exameJaExiste) {
-            setFormData({ ...formData, exames: [...formData.exames, novoExame] });
-            setNovoExame('');
+            setFormData({ ...formData, exames: [...formData.exames, exameTrimmed] });
+            setNovoExame(''); // Limpa o campo
           } else {
             alert('Este exame já foi adicionado à lista.');
           }
@@ -61,8 +64,11 @@ export default function CadastrarAtendimento() {
       } catch (error) {
         alert('Código de exame inválido ou não encontrado.');
       }
+    } else {
+      alert('Por favor, insira um código de exame válido.');
     }
   };
+
 
   // Função para remover o exame
   const handleRemoveExame = (exame) => {
@@ -75,6 +81,18 @@ export default function CadastrarAtendimento() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // define o state como "carregando"
+
+    // validação com o trim para garantir que os campos não estejam vazios ou apenas com espaços
+    if (
+      !formData.nomePaciente.trim() ||
+      !formData.sexo.trim() ||
+      !formData.email.trim() ||
+      !formData.celular.trim()
+    ) {
+      alert('Por favor, preencha todos os campos corretamente.');
+      setLoading(false);
+      return;
+    }
 
     const atendimentoData = {
       numeroAtendimento,
@@ -177,9 +195,9 @@ export default function CadastrarAtendimento() {
               {formData.exames.map((exame, index) => (
                 <li className={styles.liexame} key={index}>
                   {exame}
-                  <RiCloseCircleLine 
-                    className={styles.removeExameBtn} 
-                    onClick={() => handleRemoveExame(exame)} 
+                  <RiCloseCircleLine
+                    className={styles.removeExameBtn}
+                    onClick={() => handleRemoveExame(exame)}
                   />
                 </li>
               ))}
