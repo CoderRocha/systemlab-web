@@ -138,7 +138,6 @@ export default function Relatorios() {
             </table>
           )}
         </div>
-        <br />
         {/* Grids parecidas com um Power B.I */}
         {reportGenerated && (
           <div className={styles.listContainer}>
