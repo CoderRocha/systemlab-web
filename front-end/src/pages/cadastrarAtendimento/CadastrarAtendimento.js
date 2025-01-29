@@ -4,10 +4,10 @@ import axios from 'axios';
 
 // styles
 import styles from './CadastrarAtendimento.module.css';
+import { RiCloseCircleLine } from 'react-icons/ri'; // Importe o ícone
 
 // pages & components
 import Navbar from '../../components/navbar/Navbar';
-import { RiCloseCircleLine } from 'react-icons/ri'; // Importe o ícone
 
 export default function CadastrarAtendimento() {
   const navigate = useNavigate();
@@ -26,13 +26,9 @@ export default function CadastrarAtendimento() {
   const backendUrl = process.env.REACT_APP_BACKEND_URL; // URL do backend do .env
 
   useEffect(() => {
-    // Gera o número de atendimento e a data de cadastro apenas uma vez
+    // gera o número de atendimento e a data de cadastro apenas uma vez
     const numero = Math.floor(1000 + Math.random() * 9000);
     setNumeroAtendimento(numero);
-
-    const hoje = new Date();
-    const dataFormatada = hoje.toLocaleDateString('pt-BR'); // formato dd/mm/aaaa
-    setFormData((prev) => ({ ...prev, dataCadastro: dataFormatada }));
   }, []);
 
   const handleInputChange = (e) => {
@@ -41,22 +37,22 @@ export default function CadastrarAtendimento() {
   };
 
   const handleAddExame = async () => {
-    const exameTrimmed = novoExame.trim(); // Remove espaços extras
+    const exameTrimmed = novoExame.trim(); // remove os espaços extras
 
-    if (exameTrimmed) { // Verifica se o exame não é vazio após o trim()
+    if (exameTrimmed) { // verifica se o exame não é vazio após o trim()
       try {
-        // Verifica se o exame existe no sistema
+        // verifica se o exame existe no sistema
         const response = await axios.get(`${backendUrl}/exames/${exameTrimmed}`);
 
         if (response.status === 200) {
-          // Verifica se o exame já foi adicionado (tratando maiúsculas/minúsculas e espaços)
+          // verifica se o exame já foi adicionado (tratando case-sensitive e espaços em branco)
           const exameJaExiste = formData.exames.some(
             (exame) => exame.trim().toLowerCase() === exameTrimmed.toLowerCase()
           );
 
           if (!exameJaExiste) {
             setFormData({ ...formData, exames: [...formData.exames, exameTrimmed] });
-            setNovoExame(''); // Limpa o campo
+            setNovoExame(''); // clear o campo
           } else {
             alert('Este exame já foi adicionado à lista.');
           }
@@ -70,7 +66,7 @@ export default function CadastrarAtendimento() {
   };
 
 
-  // Função para remover o exame
+  // remover o exame
   const handleRemoveExame = (exame) => {
     setFormData({
       ...formData,
@@ -100,10 +96,10 @@ export default function CadastrarAtendimento() {
     };
 
     try {
-      // Requisição POST para o backend
+      // request POST para o backend
       await axios.post(`${backendUrl}/atendimentos`, atendimentoData);
 
-      // Redireciona para a página de atendimentos após salvar
+      // redirect para a página de atendimentos após salvar
       navigate('/atendimentos');
     } catch (error) {
       console.error('Erro ao salvar atendimento:', error);

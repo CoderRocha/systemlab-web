@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { FaFileExcel } from 'react-icons/fa'; // Ícone do React Icons
-import * as XLSX from 'xlsx'; // Biblioteca para criar o arquivo Excel
+import * as XLSX from 'xlsx';
 
 // styles
 import styles from './Relatorios.module.css';
+import { FaFileExcel } from 'react-icons/fa';
 
+// pages & components
 import Navbar from '../../components/navbar/Navbar';
 
 export default function Relatorios() {
@@ -30,7 +31,7 @@ export default function Relatorios() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    fetchRelatorios(); // Refaz a busca de relatórios quando o botão for clicado
+    fetchRelatorios(); // realiza a busca de relatórios novamente quando o botão for clicado
   };
 
   const downloadExcel = () => {
@@ -43,22 +44,22 @@ export default function Relatorios() {
     XLSX.writeFile(wb, 'relatorio_pacientes.xlsx');
   };
 
-  // Calcular os totais
+  // calcular os atendimentos totais
   const totalAtendimentos = relatorios.length;
 
-  // Ajuste para calcular corretamente o total de exames
+  // ajuste para calcular corretamente o total de exames
   const totalExames = relatorios.reduce((acc, relatorio) => {
     if (relatorio.exames) {
-      // Verificar se 'exames' é uma string (e converter em array)
+      // verificar se 'exames' é uma string, e converter em array
       const examesArray = Array.isArray(relatorio.exames) ? relatorio.exames : relatorio.exames.split(',').map(exame => exame.trim());
-      return acc + examesArray.length; // Soma a quantidade de exames
+      return acc + examesArray.length; // soma a quantidade de exames
     }
     return acc;
   }, 0);
 
   const valorTotalExames = relatorios.reduce((acc, relatorio) => acc + (relatorio.total_valor || 0), 0);
 
-  // Calcular atendimentos por sexo
+  // calcular os atendimentos por sexo
   const atendimentosPorSexo = relatorios.reduce((acc, relatorio) => {
     acc[relatorio.sexo] = (acc[relatorio.sexo] || 0) + 1;
     return acc;
@@ -68,7 +69,7 @@ export default function Relatorios() {
     ([sexoA, quantidadeA], [sexoB, quantidadeB]) => quantidadeB - quantidadeA
   );
 
-  // Calcular exames realizados por código
+  // aqui calcula os exames realizados por código de exame
   const examesRealizados = relatorios.reduce((acc, relatorio) => {
     if (relatorio.exames) {
       const examesArray = Array.isArray(relatorio.exames) ? relatorio.exames : relatorio.exames.split(',').map(exame => exame.trim());
@@ -79,7 +80,7 @@ export default function Relatorios() {
     return acc;
   }, {});
 
-  // Calcular ticket médio
+  // aqui funciona o cálculo do ticket médio
   const atendimentosComValor = relatorios.filter(relatorio => relatorio.total_valor != null && relatorio.total_valor > 0);
   const totalValorExamesComValor = atendimentosComValor.reduce((acc, relatorio) => acc + relatorio.total_valor, 0);
   const ticketMedio = atendimentosComValor.length > 0 ? (totalValorExamesComValor / atendimentosComValor.length).toFixed(2) : 0;
@@ -138,7 +139,7 @@ export default function Relatorios() {
           )}
         </div>
         <br />
-        {/* Grids B.I */}
+        {/* Grids parecidas com um Power B.I */}
         {reportGenerated && (
           <div className={styles.grids}>
             <div className={styles.gridItem}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// Styles
+// styles
 import styles from './Login.module.css';
 import Logo from '../../assets/Systemlab-logo.png';
 import BackgroundImage from '../../assets/login-background.jpg';

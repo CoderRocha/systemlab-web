@@ -15,7 +15,7 @@ export default function CadastrarExame() {
     descricao: '',
     valor: '',
   });
-  const [errorMessage, setErrorMessage] = useState(''); // Estado para mensagem de erro
+  const [errorMessage, setErrorMessage] = useState(''); // state para mensagem de erro
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,17 +25,17 @@ export default function CadastrarExame() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const codigoTrimmed = formData.codigo.trim(); // Remover espaços antes e depois do código
-    const descricaoTrimmed = formData.descricao.trim(); // Remover espaços antes e depois da descrição
+    const codigoTrimmed = formData.codigo.trim(); // remover espaços antes e depois do código
+    const descricaoTrimmed = formData.descricao.trim(); // remover espaços antes e depois da descrição
 
-    // Verifica se o código e a descrição são válidos (não podem ser apenas espaços)
+    // verifica se o código e a descrição são válidos (sem ser apenas espaços)
     if (!codigoTrimmed || !descricaoTrimmed) {
       setErrorMessage('O código e a descrição não podem ser apenas espaços.');
       return;
     }
 
     try {
-      // verifica se o código já existe no sistema com uma requisição GET)
+      // verifica se o código já existe no sistema com um GET request
       const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/exames/${codigoTrimmed}`);
 
       // se o código já existir, ele retornará com status 200
@@ -64,7 +64,7 @@ export default function CadastrarExame() {
       <Navbar />
       <div className={styles.container}>
         <h2>Cadastrar Exame</h2>
-        {errorMessage && <p className={styles.error}>{errorMessage}</p>} {/* Exibe a mensagem de erro */}
+        {errorMessage && <p className={styles.error}>{errorMessage}</p>}
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label>Código do Exame</label>

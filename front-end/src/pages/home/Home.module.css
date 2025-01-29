@@ -1,4 +1,3 @@
-/* Container para the whole page */
 .home-container {
     margin: 10px auto;
     width: 600px;
@@ -10,7 +9,6 @@
     grid-row-gap: 20px;
 }
 
-/* Styling cada section */
 .home-section {
     width: 300px;
     height: 200px;
@@ -42,13 +40,11 @@
     background-image: url('../../assets/bgsair.jpg');
 }
 
-/* Hover effect sections apenas por estética */
 .home-section:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Texto das sections */
 .home-section h2 {
     color: white;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
@@ -56,24 +52,12 @@
     text-align: center;
     text-shadow:
         1px 1px 0 #000,
-        /* Black outline */
         -1px 1px 0 #000,
         1px -1px 0 #000,
         -1px -1px 0 #000;
-        transition: color 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 .home-section:hover h2 {
     color: #0097B2;
-}
-
-/* Anchor tag estética */
-.home-section a {
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
